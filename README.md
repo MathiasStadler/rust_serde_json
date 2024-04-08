@@ -167,8 +167,18 @@ fn create_person() -> Result<String> {
 }
 
 fn main() {
-    let _= create_person();
-}
+    let _result = create_person();
+    let _str = match _result{
+        Ok(_str) => &_str,
+        Err(e) => return Err(e),
+        };
+
+    println!("{}",&str);
+
+    Ok(())
+
+        }
+    }
 EoF
 
 ```
@@ -202,7 +212,7 @@ cargo run --example 2>&1 | grep -E '^ ' | xargs -n1 echo cargo run --example
 ### /w multiple command
 
 ```bash
-cargo run --example 2>&1 | 
-grep -E '^ ' | 
+cargo run --example 2>&1 |
+grep -E '^ ' |
 xargs -i sh -c 'echo "command cargo run --example {}" ; cargo run --example {};'
 ```
