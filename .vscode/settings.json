@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "exitonerror",
+        "rustfmt",
         "serde",
         "struct"
     ]

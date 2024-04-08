@@ -2,12 +2,12 @@
 
 > try out rust serde json convert to/from rust struct
 
-[[_TOC_]]
+<!-- [[_TOC_]] -->
 
-<!-- - [env](#env)
+- [env](#env)
 - [init](#init)
 - [setup](#setup)
-- [cargo-make](#cargo-make) -->
+- [cargo-make](#cargo-make)
 
 ## Env
 
@@ -63,20 +63,6 @@ tree .
 history -w /dev/stdin
 ```
 
-## [cargo-make]{<https://docs.rs/crate/cargo-make/0.3.35#installation>}>
-
-```bash
-cargo install cargo-make
-```
-
-### cargo show installed packages
-
-```bash
-cargo install --list
-```
-
-cargo install cargo-make
-
 ## project init Cargo.toml
 
 ```bash
@@ -89,4 +75,51 @@ edition = "2021"
 [dependencies]
 serde = "1.0.197"
 serde_json = "1.0.115"
+```
+
+## [cargo-make](<https://docs.rs/crate/cargo-make/0.3.35#installation>>)
+
+```bash
+cargo install cargo-make
+```
+
+### cargo show installed packages
+
+```bash
+cargo install --list
+```
+
+## [create makefile](https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash)
+
+> [FROM HERE](https://sagiegurari.github.io/cargo-make/)
+
+```bash
+cat << EoF > ./Makefile.toml
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+dependencies = ["clean"]
+
+[tasks.test]
+command = "cargo"
+args = ["test"]
+dependencies = ["clean"]
+
+[tasks.my-flow]
+dependencies = [
+    "format",
+    "build",
+    "test"
+]
+EoF
+
 ```
