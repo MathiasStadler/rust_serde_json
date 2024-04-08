@@ -14,7 +14,7 @@
 > Try out on this os
 
 ```bash
-cat /etc/os-release 
+cat /etc/os-release
 PRETTY_NAME="Ubuntu 22.04.4 LTS"
 NAME="Ubuntu"
 VERSION_ID="22.04"
@@ -66,7 +66,7 @@ history -w /dev/stdin
 ## project init Cargo.toml
 
 ```bash
-cat Cargo.toml 
+cat Cargo.toml
 [package]
 name = "rust_serde_json"
 version = "0.1.0"
@@ -121,5 +121,61 @@ dependencies = [
     "test"
 ]
 EoF
+```
 
+## [Parsing JSON Data into a Rust Structure](https://reintech.io/blog/working-with-json-in-rust)
+
+```bash
+cat << EoF > ./examples/json_to_struct.rs
+use serde::{Deserialize, Serialize};
+use serde_json::Result;
+#[derive(Serialize, Deserialize)]
+struct Person {
+    name: String,
+    age: u8,
+    vip: bool,
+}
+fn process_person() -> Result<()> {
+    let data = r#"{"name": "John Doe", "age": 30, "vip": true}"#;
+    let p: Person = serde_json::from_str(data)?;
+    println!("Please call {} at the number {}", p.name, p.age);
+    Ok(())
+}
+EoF
+
+
+
+```
+
+## run all example
+
+### Version 1
+
+```bash
+cargo test --examples
+```
+
+### Version 2
+
+```bash
+cargo run --example 2>&1 | grep -E '^ ' | xargs -n1 cargo run --example
+```
+
+### /w verbose
+
+```bash
+cargo run --example 2>&1 | grep -E '^ ' | xargs -n1 --verbose cargo run --example
+```
+
+### /w echo
+
+```bash
+cargo run --example 2>&1 | grep -E '^ ' | xargs -n1 echo cargo run --example
+```
+
+### /w multiple command
+
+```bash
+cargo run --example 2>&1 | grep -E '^ ' | xargs -i sh -c 'echo "command cargo run --example {}" ; cargo run --
+example {};'
 ```
