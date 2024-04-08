@@ -142,8 +142,34 @@ fn process_person() -> Result<()> {
     Ok(())
 }
 EoF
+```
 
+## ## [Serializing a Rust Structure into a JSON String](https://reintech.io/blog/working-with-json-in-rust)
 
+```bash
+cat << EoF > ./examples/rust_struct_to_json.rs
+use serde::{Deserialize, Serialize};
+use serde_json::Result;
+#[derive(Serialize, Deserialize)]
+struct Person {
+    name: String,
+    age: u8,
+    vip: bool,
+}
+fn create_person() -> Result<String> {
+    let p = Person {
+        name: "John Doe".to_string(),
+        age: 43,
+        vip: true,
+    };
+    let j = serde_json::to_string(&p)?;
+    Ok(j)
+}
+
+fn main() {
+    let _= create_person();
+}
+EoF
 
 ```
 
@@ -176,6 +202,7 @@ cargo run --example 2>&1 | grep -E '^ ' | xargs -n1 echo cargo run --example
 ### /w multiple command
 
 ```bash
-cargo run --example 2>&1 | grep -E '^ ' | xargs -i sh -c 'echo "command cargo run --example {}" ; cargo run --
-example {};'
+cargo run --example 2>&1 | 
+grep -E '^ ' | 
+xargs -i sh -c 'echo "command cargo run --example {}" ; cargo run --example {};'
 ```
