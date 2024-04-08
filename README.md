@@ -2,8 +2,11 @@
 
 > try out rust serde json convert to/from rust struct
 
-- [env](#env)
+[[toc]]
+
+<!-- - [env](#env)
 - [init](#init)
+- [setup](#setup) -->
 
 ## Env
 
@@ -41,11 +44,11 @@ mkdir ./${PROJECT_NAME} && cd $_
 cargo init .
 cargo add serde
 cargo add serde-json
-cargo install cargo-make
 cargo update
 cargo upgrade
 cargo build
-mkdir examples
+cargo run
+mkdir ./examples
 cp ./src/main.rs ./examples/example.rs
 sed -i 's/world/example/g' ./examples/example.rs
 cargo build --example example
@@ -58,6 +61,22 @@ cat ./Cargo.toml
 tree .
 history -w /dev/stdin
 ```
+
+## [cargo install cargo-make]{<https://docs.rs/crate/cargo-make/0.3.35#installation>}>
+
+```bash
+cargo install cargo-make
+```
+
+### cargo show installed packages
+
+```bash
+cargo install --list
+```
+
+cargo install cargo-make
+
+## project init Cargo.toml
 
 ```bash
 cat Cargo.toml 
