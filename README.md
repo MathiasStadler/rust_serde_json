@@ -2,11 +2,12 @@
 
 > try out rust serde json convert to/from rust struct
 
-[[toc]]
+[[_TOC_]]
 
 <!-- - [env](#env)
 - [init](#init)
-- [setup](#setup) -->
+- [setup](#setup)
+- [cargo-make](#cargo-make) -->
 
 ## Env
 
@@ -62,7 +63,7 @@ tree .
 history -w /dev/stdin
 ```
 
-## [cargo install cargo-make]{<https://docs.rs/crate/cargo-make/0.3.35#installation>}>
+## [cargo-make]{<https://docs.rs/crate/cargo-make/0.3.35#installation>}>
 
 ```bash
 cargo install cargo-make
