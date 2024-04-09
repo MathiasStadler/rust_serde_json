@@ -111,30 +111,6 @@ EoF
 ```bash
 cat << EoF > ./examples/matching_on_option.rs
 fn main(){
-
-let something: Option<&str> = Some("a String"); // Some("a String")
-let nothing: Option<&str> = None;   // None
-
-match something {
-    Some(text) => println!("We go something: {}", text),
-    None => println!("We got nothing."),
-}
-
-match nothing {
-    Some(something_else) => println!("We go something: {}", something_else),
-    None => println!("We got nothing"),
-}
-
-}
-
-Eof
-```
-
-## w/o copy
-
-```bash
-cat << EoF > ./examples/matching_on_option.rs
-fn main(){
 let something: Option<&str> = Some("a String"); // Some("a String")
 let nothing: Option<&str> = None;   // None
 
@@ -154,6 +130,34 @@ match nothing {
 
 EoF
 clear
+```
+
+## Unwrapping the Option
+
+```bash
+cat << EoF > ./examples/option_unwrap.rs
+pub const fn unwrap(self) -> T {
+    match self {
+        Some(val) => val,
+        None => panic!("called \`Option::unwrap()\` on a \`None\` value"),
+    }
+}
+
+fn main(){
+
+let something: Option<&str> = Some("Something");
+let unwrapped = something.unwrap();
+println!("{:?}\n{:?}", something, unwrapped);
+let nothing: Option<&str> = None;
+nothing.unwrap();
+
+}
+
+// cargo fmt -- --emit=files ./examples/option_unwrap.rs
+// cargo run --example option_unwrap
+
+EoF
+
 ```
 
 ## rest
