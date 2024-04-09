@@ -17,10 +17,16 @@ command = "cargo"
 args = ["test"]
 # dependencies = ["clean"]
 
-[tasks.example]
-command = "cargo"
-args = ["run","--example"]
+# [tasks.example]
+# command = "bash -c "
+# args = [ "cd $PWD"]
+# args = ["cd \"${dirname} \"$0\")\" ","cargo","run","--example","examples"]
 # dependencies = ["clean","format"]
+# args = ["cargo", "run","--example",".", "2>&1 |","grep -E '^ ' |","xargs -i sh -c 'echo \"command cargo run --example {}\" ; cargo run --example {};'"]
+
+# cargo run --example 2>&1 |
+# grep -E '^ ' |
+# xargs -i sh -c 'echo "command cargo run --example {}" ; cargo run --example {};'
 
 [tasks.my-flow]
 dependencies = [
