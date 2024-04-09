@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "exitonerror",
+        "nocapture",
         "println",
         "rustfmt",
         "serde",
