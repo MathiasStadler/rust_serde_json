@@ -183,6 +183,9 @@ EoF
 
 ```
 
+
+> https://stackoverflow.com/questions/59710923/how-can-i-return-an-error-from-serde-in-a-function-that-returns-result-erro
+
 ## run all example
 
 ### Version 1

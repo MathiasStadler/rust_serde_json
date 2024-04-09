@@ -6,7 +6,7 @@ struct Person {
     age: u8,
     vip: bool,
 }
-fn create_person() -> Result<String> {
+fn create_person() -> Result<str,serde_json::Error> {
     let p = Person {
         name: "John Doe".to_string(),
         age: 43,
@@ -17,5 +17,13 @@ fn create_person() -> Result<String> {
 }
 
 fn main() {
-    let _= create_person();
+    let _result = create_person();
+    let _str = match _result {
+        Ok(_str) => &_str,
+        Err(e) => return Err(e),
+    };
+
+    println!("{}", str);
+
+    Ok(())
 }
