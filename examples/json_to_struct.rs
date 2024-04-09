@@ -14,5 +14,5 @@ fn process_person() -> Result<()> {
 }
 
 fn main() {
-    let _= process_person();
+    let _ = process_person();
 }

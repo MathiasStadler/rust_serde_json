@@ -1,16 +1,14 @@
-fn main(){
-
+fn main() {
     #[derive(Debug)]
     enum Example {
-    This,
-    That,
-}
+        This,
+        That,
+    }
 
-let _this = Example::This;
-let _that = Example::That;
+    let _this = Example::This;
+    let _that = Example::That;
 
-println!("this => {:?}",_this);
-println!("that => {:?}",_that);
-
+    println!("this => {:?}", _this);
+    println!("that => {:?}", _that);
 }
 // cargo run --example simple_enums

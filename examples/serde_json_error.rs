@@ -23,10 +23,8 @@ fn main() {
     let _: Value = match serde_json::from_reader(reader) {
         Ok(value) => value,
         Err(error) => {
-            
-                eprintln!("error: {}", error);
-                process::exit(1);
-            
+            eprintln!("error: {}", error);
+            process::exit(1);
         }
     };
 }
