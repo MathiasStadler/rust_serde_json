@@ -45,6 +45,7 @@ mkdir ./${PROJECT_NAME} && cd $_
 cargo init .
 cargo add serde
 cargo add serde-json
+cargo add reqwest --features blocking,json
 cargo update
 cargo upgrade
 cargo build

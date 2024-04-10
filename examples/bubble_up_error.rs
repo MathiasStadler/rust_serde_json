@@ -7,7 +7,7 @@ use std::collections::HashMap;
 
 fn main() {
     match get_current_date() {
-        Ok(date) => println!("We've time travelled to {}!!", date),
+        Ok(year) => println!("We've time travelled to {}!!", year),
         Err(e) => eprintln!("Oh noes, we don't know which era we're in! :( \n  {}", e),
     }
 }
@@ -28,9 +28,9 @@ fn get_current_date() -> Result<String, reqwest::Error> {
         Err(err) => return Err(err),
     };
 
-    let date = json["years"].to_string();
+    let year = json["years"].to_string();
 
-    Ok(date)
+    Ok(year)
 }
 
 // cargo fmt -- --emit=files ./examples/bubble_up_error.rs

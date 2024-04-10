@@ -184,9 +184,9 @@ EoF
 
 ```
 
-## Bubble up the error
+## Bubble up the error- return number
 
-> for this examples nee we the crate reqwest and  cargo add tokio-tasks
+> for this examples nee we the crate reqwest with features = ["blocking","json"]
 
 ```bash
 cargo add reqwest
