@@ -1,8 +1,6 @@
 // FORM HERE
 // https://www.sheshbabu.com/posts/rust-error-handling/
 
-
-
 use std::collections::HashMap;
 
 fn main() {
@@ -13,7 +11,7 @@ fn main() {
 }
 
 fn get_current_date() -> Result<String, reqwest::Error> {
-    let url = "https://postman-echo.com/time/object";
+    let url = "https://postman-echo.com/time/objectzzzz";
     let result = reqwest::blocking::get(url);
 
     let response = match result {

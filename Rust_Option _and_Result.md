@@ -133,7 +133,6 @@ match nothing {
 // cargo run --example matching_on_option
 
 EoF
-clear
 ```
 
 ## Unwrapping the Option
@@ -161,7 +160,6 @@ nothing.unwrap();
 // cargo run --example option_unwrap
 
 EoF
-
 ```
 
 ## Use a fallback value - works
@@ -187,7 +185,7 @@ EoF
 
 ## Bubble up the error- return number
 
-> for this examples nee we the crate reqwest with features = ["blocking","json"]
+> for this examples need we the crate reqwest with features = ["blocking","json"]
 
 ```bash
 cargo add reqwest
@@ -239,45 +237,44 @@ EoF
 
 ## Bubble up the error- return str
 
+> for this examples need we the crate chrono
+
+```bash
+cargo add chrono
+```
+
 ```rust
-cat << EoF > ./examples/bubble_up_error_string.rs
+cat << EoF > ./examples/bubble-up-multiple-errors.rs
 // FORM HERE
 // https://www.sheshbabu.com/posts/rust-error-handling/
+
+use chrono::NaiveDate;
 use std::collections::HashMap;
 
 fn main() {
-  match get_current_date() {
-    Ok(date) => println!("We've time travelled to {}!!", date),
-    Err(e) => eprintln!("Oh noes, we don't know which era we're in! :( \n  {}", e),
-  }
+    match get_current_date() {
+        Ok(date) => println!("We've time travelled to {}!!", date),
+        Err(e) => eprintln!("Oh noes, we don't know which era we're in! :( \n  {}", e),
+    }
 }
 
-fn get_current_date() -> Result<String, reqwest::Error> {
-  let url = "https://postman-echo.com/time/object";
-  let result = reqwest::blocking::get(url);
+fn get_current_date() -> Result<String, Box<dyn std::error::Error>> {
+    // Try changing the url to "https://postman-echo.com/time/objectzzzz"
+    let url = "https://postman-echo.com/time/object";
+    let res = reqwest::blocking::get(url)?.json::<HashMap<String, i32>>()?;
 
-  let response = match result {
-    Ok(res) => res,
-    Err(err) => return Err(err),
-  };
+    // Try changing the format to "{}-{}-{}z"
+    let formatted_date = format!("{}-{}-{}", res["years"], res["months"] + 1, res["date"]);
+    let parsed_date = NaiveDate::parse_from_str(formatted_date.as_str(), "%Y-%m-%d")?;
+    let date = parsed_date.format("%Y %B %d").to_string();
 
-  let body = response.json::<HashMap<String, i32>>();
-
-  let json = match body {
-    Ok(json) => json,
-    Err(err) => return Err(err),
-  };
-
-  // let date = json["years"].to_string();
-  let formatted_date = format!("{}-{}-{}", res["years"], res["months"] + 1, res["date"]);
-  let parsed_date = NaiveDate::parse_from_str(formatted_date.as_str(), "%Y-%m-%d")?;
-  let date = parsed_date.format("%Y %B %d").to_string();
-
-  Ok(date)
+    Ok(date)
 }
 
-// cargo fmt -- --emit=files ./examples/bubble_up_error_string.rs
-// cargo run --example bubble_up_error_string
+
+
+// cargo fmt -- --emit=files ./examples/bubble-up-multiple-errors.rs
+// cargo run --example bubble-up-multiple-errors
 EoF
 ```
 
