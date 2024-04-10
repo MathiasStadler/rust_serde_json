@@ -16,9 +16,7 @@ impl Rectangle {
 }
 
 #[allow(dead_code)]
-fn main(){
-
-}
+fn main() {}
 
 #[cfg(test)]
 mod tests {
@@ -38,4 +36,3 @@ mod tests {
         assert!(larger.can_hold(&smaller));
     }
 }
-

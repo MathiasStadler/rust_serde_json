@@ -11,9 +11,8 @@ fn try_main() -> std::io::Result<()> {
 }
 
 #[allow(dead_code)]
-fn try_main_dir(dir:&str) -> std::io::Result<()> {
+fn try_main_dir(dir: &str) -> std::io::Result<()> {
     let entries = std::fs::read_dir(dir)?;
-
 
     for entry in entries {
         println!("Directory => {}", entry?.path().display());
@@ -31,7 +30,6 @@ fn main() {
         Err(e) => println!("Err arm => Error: {:?}", e),
     }
 }
-
 
 // FROM HERE
 // https://doc.rust-lang.org/book/ch11-01-writing-tests.html
@@ -55,14 +53,12 @@ mod tests {
     // }
 
     #[test]
-        fn try_main() {
-
+    fn try_main() {
         let result = try_main_dir("/home/user");
 
         match result {
             Ok(v) => println!("Ok arm {:?}", v),
             Err(e) => println!("Err arm => Error: {:?}", e),
         }
-
     }
 }

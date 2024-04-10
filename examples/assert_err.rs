@@ -2,7 +2,7 @@
 // https://stackoverflow.com/questions/53124930/how-do-you-test-for-a-specific-rust-error/53124931#53124931
 
 #[allow(unused_imports)]
-use url::{Url, Host, Position};
+use url::{Host, Position, Url};
 
 #[allow(dead_code)]
 fn main() {}
@@ -41,6 +41,5 @@ mod test {
         assert_err!(your_func(), Err(Error::FileOpenFailed(er)) if er.kind() == ErrorKind::NotFound);
     }
 }
-
 
 // cargo test --package rust_serde_json  --example  assert_err -- test --nocapture
