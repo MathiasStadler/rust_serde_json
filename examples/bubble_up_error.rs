@@ -11,7 +11,8 @@ fn main() {
 }
 
 fn get_current_date() -> Result<String, reqwest::Error> {
-    let url = "https://postman-echo.com/time/objectzzzz";
+    // let url = "https://postman-echo.com/time/objectzzzz";
+    let url = "https://postman-echo.com/time/object";
     let result = reqwest::blocking::get(url);
 
     let response = match result {
