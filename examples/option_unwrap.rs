@@ -1,11 +1,14 @@
-pub const fn unwrap(self) -> T {
-    match self {
+
+
+pub const fn unwrap<T>(_self:Option<T>) -> T {
+    match _self {
         Some(val) => val,
         None => panic!("called `Option::unwrap()` on a `None` value"),
     }
 }
 
 fn main() {
+
     let something: Option<&str> = Some("Something");
     let unwrapped = something.unwrap();
     println!("{:?}\n{:?}", something, unwrapped);
