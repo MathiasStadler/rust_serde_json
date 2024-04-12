@@ -281,6 +281,7 @@ println!("{:?}", a_unwrapped);
 
 /*
 export FILE_NAME=08_option_return_work_with_three_different_ways.rs
+git add $FILE_NAME
 git commit --all --message="add BEFORE housekeeping => $FILE_NAME"
 git push
 cargo clippy --fix
