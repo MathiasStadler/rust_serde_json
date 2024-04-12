@@ -214,6 +214,8 @@ export FILE_NAME=06_option_example_str.rs
 git commit -a -m "add $FILE_NAME before housekeeping"
 cargo clippy --fix
 cargo fmt -- --emit=files 
+git commit -a -m "add $FILE_NAME after housekeeping"
+git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
 */
 EoF

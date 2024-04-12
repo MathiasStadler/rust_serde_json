@@ -20,6 +20,6 @@ nothing.unwrap();
 // cargo run --example 05_option_unwrap
 */
 
-fn main(){
+fn main() {
     // nothing
 }
