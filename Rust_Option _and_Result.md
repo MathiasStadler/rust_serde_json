@@ -280,14 +280,15 @@ println!("{:?}", a_unwrapped);
 }
 
 /*
-export FILE_NAME=08_option_return_work_with_three_different_ways.rs
-git add $FILE_NAME
-git commit --all --message="add BEFORE housekeeping => $FILE_NAME"
+export FILE_NAME="08_option_return_work_with_three_different_ways.rs"
+export FILE_DIR_NAME="./examples"
+git add $FILE_DIR_NAME/$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo fmt -- --emit=files 
-git commit --all --message="add AFTER housekeeping => $FILE_NAME"
+git commit --all --message="add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
 */
