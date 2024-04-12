@@ -246,6 +246,7 @@ println!("{:?}", q);;
 export FILE_NAME=07_option_return_from_fn.rs
 git commit --all --message="add BEFORE housekeeping => $FILE_NAME"
 cargo clippy --fix
+cargo clippy --fix --examples
 cargo fmt -- --emit=files 
 git commit -a -m "add AFTER housekeeping => $FILE_NAME"
 git push

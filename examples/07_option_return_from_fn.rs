@@ -1,9 +1,9 @@
 // Returns the text if it contains target character, None otherwise:
 fn contains_char(text: &str, target_c: char) -> Option<&str> {
     if text.chars().any(|ch| ch == target_c) {
-        return Some(text);
+        Some(text)
     } else {
-        return None;
+        None
     }
 }
 
