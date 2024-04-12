@@ -13,6 +13,7 @@ pub fn main() {
 }
 
 /*
+git commit -a -m "add 06_option_example_str before housekeeping"
 cargo clippy --fix
 cargo fmt -- --emit=files
 cargo run --example 06_option_example_str
