@@ -30,4 +30,4 @@ impl From<chrono::format::ParseError> for MyCustomError {
 }
 
 #[allow(dead_code)]
-fn main(){}
+fn main() {}

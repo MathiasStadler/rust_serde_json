@@ -1,4 +1,3 @@
-
 mod error_custom_error;
 
 use chrono::NaiveDate;
@@ -33,4 +32,3 @@ fn get_current_date() -> Result<String, MyCustomError> {
 
 // cargo fmt -- --emit=files ./examples/bubble-up-custom-errors.rs
 // cargo run --example bubble-up-custom-errors
-

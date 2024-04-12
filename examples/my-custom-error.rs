@@ -1,4 +1,4 @@
-/* 
+/*
 FROM HERE
 https://github.com/sheshbabu/rust-error-handling-examples/blob/master/07-create-custom-errors/src/main.rs
 */

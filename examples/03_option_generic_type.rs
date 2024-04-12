@@ -25,4 +25,4 @@ fn main() {
     );
 }
 
-// cargo run --example option_generic_type
+// cargo run --example 03_option_generic_type

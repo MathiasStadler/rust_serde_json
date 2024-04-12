@@ -31,4 +31,3 @@ fn get_current_date() -> Result<String, Box<dyn std::error::Error>> {
 
     Ok(date)
 }
-

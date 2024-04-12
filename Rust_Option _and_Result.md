@@ -19,7 +19,7 @@ Eof
 ## simple enum in Rust
 
 ```bash
-cat << EoF > ./examples/simple_enums.rs
+cat << EoF > ./examples/01_simple_enums.rs
 fn main(){
 
     #[derive(Debug)]
@@ -35,14 +35,14 @@ println!("this => {:?}",_this);
 println!("that => {:?}",_that);
 
 }
-// cargo run --example simple_enums
+// cargo run --example 01_simple_enums
 EoF
 ```
 
 ## match enum in RUST
 
 ```bash
-cat << EoF > ./examples/match_enums.rs
+cat << EoF > ./examples/02_match_enums.rs
 
 #[derive(Debug)]
     enum Example {
@@ -70,14 +70,14 @@ matcher(Example::This);
 matcher(Example::That);
 
 }
-// cargo run --example match_enums
+// cargo run --example 02_match_enums
 EoF
 ```
 
 ## The Option is generic over type T
 
 ```bash
-cat << EoF > ./examples/option_generic_type.rs
+cat << EoF > ./examples/03_option_generic_type.rs
 #[allow(dead_code)]
 #[derive(Debug)]
 struct Person {
@@ -106,7 +106,7 @@ println!(
 );
 }
 
-// cargo run --example option_generic_type
+// cargo run --example 03_option_generic_type
 
 EoF
 ```
@@ -114,8 +114,8 @@ EoF
 ## Matching on the Option
 
 ```bash
-cat << EoF > ./examples/matching_on_option.rs
-fn main(){
+cat << EoF > ./examples/04_matching_on_option.rs
+pub fn main() {
 let something: Option<&str> = Some("a String"); // Some("a String")
 let nothing: Option<&str> = None;   // None
 
@@ -130,16 +130,16 @@ match nothing {
 }
 }
 
-// cargo fmt -- --emit=files ./examples/matching_on_option.rs
-// cargo run --example matching_on_option
+// cargo fmt -- --emit=files ./examples/04_matching_on_option.rs
+// cargo run --example 04_matching_on_option
 
 EoF
 ```
 
 ## Unwrapping the Option
 
-```bash
-cat << EoF > ./examples/option_unwrap.rs
+```rust
+cat << EoF > ./examples/05_option_unwrap.rs
 pub const fn unwrap(self) -> T {
     match self {
         Some(val) => val,
@@ -157,8 +157,8 @@ nothing.unwrap();
 
 }
 
-// cargo fmt -- --emit=files ./examples/option_unwrap.rs
-// cargo run --example option_unwrap
+// cargo fmt -- --emit=files ./examples/05_option_unwrap.rs
+// cargo run --example 05_option_unwrap
 
 EoF
 ```
@@ -182,5 +182,31 @@ let something: Option<&str> = Some("Something");
 }
 // cargo run --example option_unwrap_two
 
+EoF
+```
+
+## example option => &str
+
+```rust
+cat << EoF > ./examples/06_option_example_str.rs
+fn might_print(option: Option<&str>) {
+    match option {
+        Some(text) => println!("The argument contains the following value: '{}'", text),
+        None => println!("The argument contains None."),
+    }
+}
+
+pub fn main(){
+   
+let something: Option<&str> = Some("some str");
+let nothing: Option<&str> = None;
+might_print(something);
+might_print(nothing); 
+}
+
+/*
+cargo fmt -- --emit=files 
+cargo run --example 06_option_example_str
+*/
 EoF
 ```

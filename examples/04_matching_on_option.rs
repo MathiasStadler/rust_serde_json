@@ -1,4 +1,4 @@
-fn main() {
+pub fn main() {
     let something: Option<&str> = Some("a String"); // Some("a String")
     let nothing: Option<&str> = None; // None
 
@@ -13,5 +13,5 @@ fn main() {
     }
 }
 
-// cargo fmt -- --emit=files ./examples/matching_on_option.rs
-// cargo run --example matching_on_option
+// cargo fmt -- --emit=files ./examples/04_matching_on_option.rs
+// cargo run --example 04_matching_on_option
