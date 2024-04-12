@@ -5,6 +5,12 @@
 - - [GITHUB REPO](https://github.com/sheshbabu/rust-error-handling-examples/tree/master)
 - [good tut rust basic](http://saidvandeklundert.net/learn/)
 
+## git editor set of vi
+
+```bash
+git config --global core.editor vi
+```
+
 ## template bash script
 
 ```bash
