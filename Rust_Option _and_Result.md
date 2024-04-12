@@ -211,7 +211,6 @@ might_print(nothing);
 
 /*
 export FILE_NAME=06_option_example_str.rs
-git commit -a -m "add $FILE_NAME before housekeeping"
 git commit -a -m "add BEFORE housekeeping => $FILE_NAME "
 cargo clippy --fix
 cargo fmt -- --emit=files 
