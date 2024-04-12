@@ -11,6 +11,12 @@
 git config --global core.editor vi
 ```
 
+## git status
+
+```bash
+git status
+```
+
 ## template bash script
 
 ```bash
