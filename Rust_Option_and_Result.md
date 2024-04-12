@@ -214,18 +214,18 @@ fn might_print(option: Option<&str>) {
 }
 
 pub fn main(){
-   
+
 let something: Option<&str> = Some("some str");
 let nothing: Option<&str> = None;
 might_print(something);
-might_print(nothing); 
+might_print(nothing);
 }
 
 /*
 export FILE_NAME=06_option_example_str.rs
 git commit -a -m "add BEFORE housekeeping => $FILE_NAME "
 cargo clippy --fix
-cargo fmt -- --emit=files 
+cargo fmt -- --emit=files
 git commit -a -m "add AFTER housekeeping => $FILE_NAME"
 git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
@@ -247,7 +247,7 @@ fn contains_char(text: &str, target_c: char) -> Option<&str> {
 }
 
 pub fn main(){
-   
+
 let a = contains_char("Rust in action", 'a');
 let q = contains_char("Rust in action", 'q');
 println!("{:?}", a);
@@ -260,7 +260,7 @@ git commit --all --message="add BEFORE housekeeping => $FILE_NAME"
 git push
 cargo clippy --fix
 cargo clippy --fix --examples
-cargo fmt -- --emit=files 
+cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => $FILE_NAME"
 git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
@@ -283,11 +283,35 @@ fn contains_char(text: &str, target_c: char) -> Option<&str> {
 
 pub fn main(){
 
+{
 // way one
+// The first one, which is the least safe, would be simply calling unwrap
 let a = contains_char("Rust in action", 'a');
-let a_unwrapped = a.unwrap();   
+let a_unwrapped = a.unwrap();
 println!("{:?}", a_unwrapped);
+}
 
+{
+// way two
+// The second, safer option, is to use a match statement
+let a = contains_char("Rust in action", 'a');
+match a {
+    Some(a) => println!("contains_char returned something: {:?}!", a),
+    None => println!("contains_char did not return something, so branch off here"),
+}
+
+}
+{
+    // way three
+    // The third option is to capture the return of the function in a variable and use if let
+    let a = contains_char("Rust in action", 'a');
+if let Some(a) = contains_char("Rust in action", 'a') {
+    println!("contains_char returned something: {:?}!", a);
+} else {
+    println!("contains_char did not return something, so branch off here")
+}
+
+}
 
 }
 
@@ -299,7 +323,7 @@ git commit --all --message="add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME
 git push
 cargo clippy --fix
 cargo clippy --fix --examples
-cargo fmt -- --emit=files 
+cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
