@@ -249,7 +249,7 @@ git push
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo fmt -- --emit=files 
-git commit -a -m "add AFTER housekeeping => $FILE_NAME"
+git commit --all --message="add AFTER housekeeping => $FILE_NAME"
 git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
 */
