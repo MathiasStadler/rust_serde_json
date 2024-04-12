@@ -12,4 +12,8 @@ pub fn main() {
     might_print(nothing);
 }
 
-// cargo run --example 06_option_example_str
+/*
+cargo clippy --fix
+cargo fmt -- --emit=files
+cargo run --example 06_option_example_str
+*/
