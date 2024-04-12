@@ -190,7 +190,7 @@ let something: Option<&str> = Some("Something");
 EoF
 ```
 
-## example option => &str
+## Passing an optional value to a function
 
 ```rust
 cat << EoF > ./examples/06_option_example_str.rs
@@ -211,6 +211,39 @@ might_print(nothing);
 
 /*
 export FILE_NAME=06_option_example_str.rs
+git commit -a -m "add BEFORE housekeeping => $FILE_NAME "
+cargo clippy --fix
+cargo fmt -- --emit=files 
+git commit -a -m "add AFTER housekeeping => $FILE_NAME"
+git push
+cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
+
+## Having a function return an optional value
+
+```rust
+cat << EoF > ./examples/07_option_return_from_fn.rs
+// Returns the text if it contains target character, None otherwise:
+fn contains_char(text: &str, target_c: char) -> Option<&str> {
+    if text.chars().any(|ch| ch == target_c) {
+        return Some(text);
+    } else {
+        return None;
+    }
+}
+
+pub fn main(){
+   
+let a = contains_char("Rust in action", 'a');
+let q = contains_char("Rust in action", 'q');
+println!("{:?}", a);
+println!("{:?}", q);; 
+}
+
+/*
+export FILE_NAME=07_option_return_from_fn.rs
 git commit -a -m "add BEFORE housekeeping => $FILE_NAME "
 cargo clippy --fix
 cargo fmt -- --emit=files 
