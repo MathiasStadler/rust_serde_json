@@ -205,6 +205,7 @@ might_print(nothing);
 }
 
 /*
+cargo clippy --fix
 cargo fmt -- --emit=files 
 cargo run --example 06_option_example_str
 */
