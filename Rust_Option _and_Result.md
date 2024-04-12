@@ -205,9 +205,11 @@ might_print(nothing);
 }
 
 /*
+FILE_NAME = 06_option_example_str.rs
+git commit -a -m "add $FILE_NAME before housekeeping"
 cargo clippy --fix
 cargo fmt -- --emit=files 
-cargo run --example 06_option_example_str
+cargo run --example $FILE_NAME
 */
 EoF
 ```
