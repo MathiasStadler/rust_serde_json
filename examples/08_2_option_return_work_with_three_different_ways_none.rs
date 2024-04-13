@@ -12,7 +12,7 @@ pub fn main(){
 {
 // way one
 // The first one, which is the least safe, would be simply calling unwrap
-// Some
+//Some
 let a = contains_char("Rust in action", 'a');
 let a_unwrapped = a.unwrap();
 println!("{:?}", a_unwrapped);
@@ -47,15 +47,15 @@ if let Some(a) = contains_char("Rust in action", 'a') {
 }
 
 /*
-export FILE_NAME="08_option_return_work_with_three_different_ways_none.rs"
+export FILE_NAME="08_2_option_return_work_with_three_different_ways_none.rs"
 export FILE_DIR_NAME="./examples"
-git add ./examples/08_option_return_work_with_three_different_ways.rs
-git commit --all --message="add BEFORE housekeeping => ./examples/08_option_return_work_with_three_different_ways.rs"
+git add $FILE_DIR_NAME/$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo fmt -- --emit=files
-git commit --all --message="add AFTER housekeeping => ./examples/08_option_return_work_with_three_different_ways.rs"
+git commit --all --message="add AFTER housekeeping => $FILE_DIR_NAME/"
 git push
-cargo run --example 08_option_return_work_with_three_different_ways
+cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
 */

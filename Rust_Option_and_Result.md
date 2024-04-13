@@ -334,7 +334,7 @@ EoF
 ## three different ways to work with the Optional return - None
 
 ```rust
-cat << EoF > ./examples/08.2_option_return_work_with_three_different_ways_none.rs
+cat << EoF > ./examples/08_2_option_return_work_with_three_different_ways_none.rs
 // Returns the text if it contains target character, None otherwise:
 fn contains_char(text: &str, target_c: char) -> Option<&str> {
     if text.chars().any(|ch| ch == target_c) {
@@ -349,7 +349,12 @@ pub fn main(){
 {
 // way one
 // The first one, which is the least safe, would be simply calling unwrap
+//Some
 let a = contains_char("Rust in action", 'a');
+let a_unwrapped = a.unwrap();
+println!("{:?}", a_unwrapped);
+//None
+let a = contains_char("Rust in action", 'x');
 let a_unwrapped = a.unwrap();
 println!("{:?}", a_unwrapped);
 }
@@ -379,17 +384,17 @@ if let Some(a) = contains_char("Rust in action", 'a') {
 }
 
 /*
-export FILE_NAME="08.2_option_return_work_with_three_different_ways_none.rs"
+export FILE_NAME="08_2_option_return_work_with_three_different_ways_none.rs"
 export FILE_DIR_NAME="./examples"
-git add $FILE_DIR_NAME/$FILE_NAME
-git commit --all --message="add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo fmt -- --emit=files
-git commit --all --message="add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/$FILE_NAME"
 git push
-cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
