@@ -14,13 +14,18 @@ pub fn main() {
         //Some
         let a = contains_char("Rust in action", 'a');
         let a_unwrapped = a.unwrap();
-        println!("{:?}", a_unwrapped);
+        println!("Letter contains string {:?}", a_unwrapped);
         //None
         let _return_option = contains_char("Rust in action", 'x');
 
         // called  on a  value not possible
-        let a_unwrapped = a.unwrap();
-        println!("{:?}", a_unwrapped);
+        //let a_unwrapped = _return_option.unwrap();
+        //println!("a_unwrapped => {:?}", a_unwrapped);
+        match _return_option {
+            Some(contains_char) => println!("Letter contains string {:?}", contains_char),
+            None => println!("Letter NOT contains string"),
+        }
+
     }
 
     {
