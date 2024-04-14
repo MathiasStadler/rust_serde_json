@@ -303,14 +303,15 @@ match a {
 }
 {
     // way three
-    // The third option is to capture the return of the function in a variable and use if let
+    // The third option is to capture the return of the function 
+    // in a variable and use if let
     let a = contains_char("Rust in action", 'a');
-if let Some(a) = contains_char("Rust in action", 'a') {
-    println!("contains_char returned something: {:?}!", a);
-} else {
-    println!("contains_char did not return something, so branch off here")
-}
-
+    if let Some(a) = contains_char("Rust in action", 'a') {
+        println!("contains_char returned something: {:?}!", a);
+    }
+    else {
+        println!("contains_char did not return something, so branch off here")
+    }
 }
 
 }
@@ -354,7 +355,11 @@ let a = contains_char("Rust in action", 'a');
 let a_unwrapped = a.unwrap();
 println!("{:?}", a_unwrapped);
 //None
-let a = contains_char("Rust in action", 'x');
+let return_option = contains_char("Rust in action", 'x');
+
+
+
+// called `Option::unwrap()` on a `None` value not possible
 let a_unwrapped = a.unwrap();
 println!("{:?}", a_unwrapped);
 }
@@ -371,13 +376,14 @@ match a {
 }
 {
     // way three
-    // The third option is to capture the return of the function in a variable and use if let
+    // The third option is to capture the return of 
+    // the function in a variable and use if let
     let a = contains_char("Rust in action", 'a');
-if let Some(a) = contains_char("Rust in action", 'a') {
+    if let Some(a) = contains_char("Rust in action", 'a') {
     println!("contains_char returned something: {:?}!", a);
-} else {
+    } else {
     println!("contains_char did not return something, so branch off here")
-}
+    }
 
 }
 
@@ -392,7 +398,7 @@ git push
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo fmt -- --emit=files
-git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/$FILE_NAME"
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
 cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */

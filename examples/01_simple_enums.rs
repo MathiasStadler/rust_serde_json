@@ -1,4 +1,4 @@
-fn main() {
+pub fn main() {
     #[derive(Debug)]
     enum Example {
         This,
