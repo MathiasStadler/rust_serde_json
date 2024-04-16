@@ -31,26 +31,25 @@ Eof
 ## simple enum in Rust
 
 ```bash
-cat << EoF > ./examples/01_simple_enums.rs
+export EXAMPLE_SCRIPT_FILE="01_simple_enums.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 fn main(){
-
     #[derive(Debug)]
     enum Example {
     This,
     That,
 }
-
 let _this = Example::This;
 let _that = Example::That;
 
 println!("this => {:?}",_this);
 println!("that => {:?}",_that);
-
 }
-// cargo run --example 01_simple_enums
+
 /*
-export FILE_NAME="01_simple_enums.rs"
-export FILE_DIR_NAME="./examples"
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
 git add \$FILE_DIR_NAME/\$FILE_NAME
 git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -67,8 +66,9 @@ EoF
 ## match enum in RUST
 
 ```bash
-cat << EoF > ./examples/02_match_enums.rs
-
+export EXAMPLE_SCRIPT_FILE="02_match_enums.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 #[derive(Debug)]
     enum Example {
     This,
@@ -95,7 +95,19 @@ matcher(Example::This);
 matcher(Example::That);
 
 }
-// cargo run --example 02_match_enums
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
 EoF
 ```
 
