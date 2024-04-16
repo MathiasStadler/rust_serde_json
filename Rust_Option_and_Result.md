@@ -378,15 +378,15 @@ match _return_option {
 // The second, safer option, is to use a match statement
 let a = contains_char("Rust in action", 'a');
     match a {
-        Some(a) => println!("contains_char returned something: {:?}!", a),
-        None => println!("contains_char did not return something, so branch off here"),
+        Some(a) => println!("Some => contains_char returned something: {:?}!", a),
+        None => println!("None => contains_char did not return something, so branch off here"),
     }
 
     // None
     let a = contains_char("Rust in action", 'x');
         match a {
-            Some(a) => println!("contains_char returned something: {:?}!", a),
-            None => println!("contains_char did not return something, so branch off here"),
+            Some(a) => println!("Some => contains_char returned something: {:?}!", a),
+            None => println!("None => contains_char did not return something, so branch off here"),
         }
     }
 {
@@ -395,19 +395,19 @@ let a = contains_char("Rust in action", 'a');
         // the function in a variable and use if let
         let a = contains_char("Rust in action", 'a');
         if let Some(a) = contains_char("Rust in action", 'a') {
-            println!("contains_char returned something: {:?}!", a);
+            println!("Some => contains_char returned something: {:?}!", a);
         } 
         else {
-        println!("contains_char did not return something, so branch off here")
+        println!("Some else => contains_char did not return something, so branch off here")
         }
 
         //None
         let a = contains_char("Rust in action", 'x');
         if let Some(a) = contains_char("Rust in action", 'a') {
-            println!("contains_char returned something: {:?}!", a);
+            println!("if let => contains_char returned something: {:?}!", a);
         } 
         else {
-            println!("contains_char did not return something, so branch off here")
+            println!("if let else => contains_char did not return something, so branch off here")
         }
     }
 }
