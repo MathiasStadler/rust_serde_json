@@ -285,7 +285,9 @@ EoF
 ## Passing an optional value to a function
 
 ```rust
-cat << EoF > ./examples/06_option_example_str.rs
+export EXAMPLE_SCRIPT_FILE="06_option_example_str.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 fn might_print(option: Option<&str>) {
     match option {
         Some(text) => println!("The argument contains the following value: '{}'", text),
@@ -302,13 +304,20 @@ might_print(nothing);
 }
 
 /*
-export FILE_NAME=06_option_example_str.rs
-git commit -a -m "add BEFORE housekeeping => $FILE_NAME "
-cargo clippy --fix
-cargo fmt -- --emit=files
-git commit -a -m "add AFTER housekeeping => $FILE_NAME"
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
-cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo check --verbose
+cargo check --examples --verbose
+
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
