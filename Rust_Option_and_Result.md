@@ -335,7 +335,7 @@ EoF
 ## three different ways to work with the Optional return - None
 
 ```rust
-cat << EoF > ./examples/08_2_option_return_work_with_three_different_ways_none.rs
+cat << EoF > ./examples/09_option_return_work_with_three_different_ways_none.rs
 // Returns the text if it contains target character, None otherwise:
 fn contains_char(text: &str, target_c: char) -> Option<&str> {
     if text.chars().any(|ch| ch == target_c) {
@@ -355,13 +355,22 @@ let a = contains_char("Rust in action", 'a');
 let a_unwrapped = a.unwrap();
 println!("{:?}", a_unwrapped);
 //None
-let return_option = contains_char("Rust in action", 'x');
-
-
+// //let return_option = contains_char("Rust in action", 'x');
 
 // called `Option::unwrap()` on a `None` value not possible
-let a_unwrapped = a.unwrap();
-println!("{:?}", a_unwrapped);
+// //let a_unwrapped = a.unwrap();
+// //println!("{:?}", a_unwrapped);
+
+// unwrap() called  on a  expected None is NOT possible
+// alternative used MATCH instead
+//Option value => None
+let _return_option = contains_char("Rust in action", 'x');
+
+match _return_option {
+    Some(contains_char) => println!("Letter contains string {:?}", contains_char),
+    None => println!("Letter NOT contains string"),
+    }
+
 }
 
 {
@@ -390,7 +399,7 @@ match a {
 }
 
 /*
-export FILE_NAME="08_2_option_return_work_with_three_different_ways_none.rs"
+export FILE_NAME="09_option_return_work_with_three_different_ways_none.rs"
 export FILE_DIR_NAME="./examples"
 git add \$FILE_DIR_NAME/\$FILE_NAME
 git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
