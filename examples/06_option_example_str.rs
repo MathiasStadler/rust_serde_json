@@ -5,12 +5,11 @@ fn might_print(option: Option<&str>) {
     }
 }
 
-pub fn main(){
-
-let something: Option<&str> = Some("some str");
-let nothing: Option<&str> = None;
-might_print(something);
-might_print(nothing);
+pub fn main() {
+    let something: Option<&str> = Some("some str");
+    let nothing: Option<&str> = None;
+    might_print(something);
+    might_print(nothing);
 }
 
 /*
