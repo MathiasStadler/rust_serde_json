@@ -164,7 +164,9 @@ EoF
 ## Matching on the Option
 
 ```bash
-cat << EoF > ./examples/04_matching_on_option.rs
+export EXAMPLE_SCRIPT_FILE="04_matching_on_option.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 pub fn main() {
 let something: Option<&str> = Some("a String"); // Some("a String")
 let nothing: Option<&str> = None;   // None
@@ -180,16 +182,28 @@ match nothing {
 }
 }
 
-// cargo fmt -- --emit=files ./examples/04_matching_on_option.rs
-// cargo run --example 04_matching_on_option
-
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
 EoF
 ```
 
 ## Unwrapping the Option
 
 ```rust
-cat << EoF > ./examples/05_option_unwrap.rs
+export EXAMPLE_SCRIPT_FILE="05_option_unwrap.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 /*
 pub const fn unwrap(self) -> T {
     match self {
@@ -215,13 +229,29 @@ nothing.unwrap();
 fn main(){
     // nothing
 }
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
 EoF
 ```
 
 ## option-and-result -- complete sample
 
 ```rust
-cat << EoF > ./examples/option_unwrap_two.rs
+export EXAMPLE_SCRIPT_FILE="05_option_unwrap_two.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 // FROM HERE
 // https://github.com/saidvandeklundert/LearningRust/blob/master/blog/option-and-result/src/main.rs
 
@@ -235,8 +265,20 @@ let something: Option<&str> = Some("Something");
         //nothing.unwrap();
 
 }
-// cargo run --example option_unwrap_two
 
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
 EoF
 ```
 
