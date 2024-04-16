@@ -1,9 +1,9 @@
 // Returns the text if it contains target character, None otherwise:
 fn contains_char(text: &str, target_c: char) -> Option<&str> {
     if text.chars().any(|ch| ch == target_c) {
-        return Some(text);
+        Some(text)
     } else {
-        return None;
+        None
     }
 }
 
@@ -53,7 +53,7 @@ pub fn main() {
         // way three
         // The third option is to capture the return of
         // the function in a variable and use if let
-        let a = contains_char("Rust in action", 'a');
+        let _a = contains_char("Rust in action", 'a');
         if let Some(a) = contains_char("Rust in action", 'a') {
             println!("contains_char returned something: {:?}!", a);
         } else {
@@ -61,7 +61,7 @@ pub fn main() {
         }
 
         //None
-        let a = contains_char("Rust in action", 'x');
+        let _a = contains_char("Rust in action", 'x');
         if let Some(a) = contains_char("Rust in action", 'a') {
             println!("contains_char returned something: {:?}!", a);
         } else {
