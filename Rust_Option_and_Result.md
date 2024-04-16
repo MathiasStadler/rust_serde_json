@@ -371,9 +371,7 @@ match _return_option {
     Some(contains_char) => println!("Some => Letter contains string {:?}", contains_char),
     None => println!("None => Letter NOT contains string"),
     }
-
 }
-
 {
 // way two
 // The second, safer option, is to use a match statement
@@ -391,26 +389,22 @@ let a = contains_char("Rust in action", 'a');
         }
     }
 {
-        // way three
-        // The third option is to capture the return of 
+       // way three
+        // The third option is to capture the return of
         // the function in a variable and use if let
-        // GARBAGE
-        // let a = contains_char("Rust in action", 'a');
         if let Some(a) = contains_char("Rust in action", 'a') {
-            println!("Some => contains_char returned something: {:?}!", a);
+            println!("Some => if let => contains_char returned something: {:?}!", a);
         } 
         else {
-        println!("Some else => contains_char did not return something, so branch off here")
+            println!("None => if let else => contains_char did not return something, so branch off here")
         }
 
         //None
-        // GARBAGE
-        // let a = contains_char("Rust in action", 'x');
         if let Some(a) = contains_char("Rust in action", 'x') {
-            println!("if let => contains_char returned something: {:?}!", a);
+            println!("Some => if let => contains_char returned something: {:?}!", a);
         } 
         else {
-            println!("if let else => contains_char did not return something, so branch off here")
+            println!("None => if let else => contains_char did not return something, so branch off here")
         }
     }
 }
