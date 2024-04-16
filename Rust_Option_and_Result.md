@@ -353,7 +353,8 @@ pub fn main(){
 //Some
 let a = contains_char("Rust in action", 'a');
 let a_unwrapped = a.unwrap();
-println!("{:?}", a_unwrapped);
+println!("Some /w unwrap => contains_char returned something {:?}", a_unwrapped);
+
 //None
 // //let return_option = contains_char("Rust in action", 'x');
 
@@ -393,7 +394,8 @@ let a = contains_char("Rust in action", 'a');
         // way three
         // The third option is to capture the return of 
         // the function in a variable and use if let
-        let a = contains_char("Rust in action", 'a');
+        // GARBAGE
+        // let a = contains_char("Rust in action", 'a');
         if let Some(a) = contains_char("Rust in action", 'a') {
             println!("Some => contains_char returned something: {:?}!", a);
         } 
@@ -402,8 +404,9 @@ let a = contains_char("Rust in action", 'a');
         }
 
         //None
-        let a = contains_char("Rust in action", 'x');
-        if let Some(a) = contains_char("Rust in action", 'a') {
+        // GARBAGE
+        // let a = contains_char("Rust in action", 'x');
+        if let Some(a) = contains_char("Rust in action", 'x') {
             println!("if let => contains_char returned something: {:?}!", a);
         } 
         else {
