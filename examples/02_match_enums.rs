@@ -1,9 +1,8 @@
 #[derive(Debug)]
-    enum Example {
+enum Example {
     This,
     That,
-    }
-
+}
 
 fn matcher(x: Example) {
     match x {
@@ -12,17 +11,15 @@ fn matcher(x: Example) {
     }
 }
 
-fn main(){
+fn main() {
+    let _this = Example::This;
+    let _that = Example::That;
 
-let _this = Example::This;
-let _that = Example::That;
+    println!("Example::This contains: {:?}", _this);
+    println!("Example::That contains: {:?}", _that);
 
-println!("Example::This contains: {:?}", _this);
-println!("Example::That contains: {:?}", _that);
-
-matcher(Example::This);
-matcher(Example::That);
-
+    matcher(Example::This);
+    matcher(Example::That);
 }
 /*
 export FILE_NAME=02_match_enums.rs
