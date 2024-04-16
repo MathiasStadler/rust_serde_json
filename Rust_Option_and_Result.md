@@ -367,8 +367,8 @@ println!("{:?}", a_unwrapped);
 let _return_option = contains_char("Rust in action", 'x');
 
 match _return_option {
-    Some(contains_char) => println!("Letter contains string {:?}", contains_char),
-    None => println!("Letter NOT contains string"),
+    Some(contains_char) => println!("Some => Letter contains string {:?}", contains_char),
+    None => println!("None => Letter NOT contains string"),
     }
 
 }
@@ -377,25 +377,39 @@ match _return_option {
 // way two
 // The second, safer option, is to use a match statement
 let a = contains_char("Rust in action", 'a');
-match a {
-    Some(a) => println!("contains_char returned something: {:?}!", a),
-    None => println!("contains_char did not return something, so branch off here"),
-}
-
-}
-{
-    // way three
-    // The third option is to capture the return of 
-    // the function in a variable and use if let
-    let a = contains_char("Rust in action", 'a');
-    if let Some(a) = contains_char("Rust in action", 'a') {
-    println!("contains_char returned something: {:?}!", a);
-    } else {
-    println!("contains_char did not return something, so branch off here")
+    match a {
+        Some(a) => println!("contains_char returned something: {:?}!", a),
+        None => println!("contains_char did not return something, so branch off here"),
     }
 
-}
+    // None
+    let a = contains_char("Rust in action", 'x');
+        match a {
+            Some(a) => println!("contains_char returned something: {:?}!", a),
+            None => println!("contains_char did not return something, so branch off here"),
+        }
+    }
+{
+        // way three
+        // The third option is to capture the return of 
+        // the function in a variable and use if let
+        let a = contains_char("Rust in action", 'a');
+        if let Some(a) = contains_char("Rust in action", 'a') {
+            println!("contains_char returned something: {:?}!", a);
+        } 
+        else {
+        println!("contains_char did not return something, so branch off here")
+        }
 
+        //None
+        let a = contains_char("Rust in action", 'x');
+        if let Some(a) = contains_char("Rust in action", 'a') {
+            println!("contains_char returned something: {:?}!", a);
+        } 
+        else {
+            println!("contains_char did not return something, so branch off here")
+        }
+    }
 }
 
 /*
