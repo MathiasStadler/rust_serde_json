@@ -6,7 +6,7 @@ enum Example {
 
 fn matcher(x: Example) {
     match x {
-        Example::This => println!("We got This."),
+        Example::This => println!("We got This. {:?}",x),
         Example::That => println!("We got That."),
     }
 }
