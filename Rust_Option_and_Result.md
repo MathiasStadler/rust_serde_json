@@ -3,7 +3,7 @@
 - [FROM HERE](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
 - [FROM HERE](https://www.sheshbabu.com/posts/rust-error-handling/)
 - - [GITHUB REPO](https://github.com/sheshbabu/rust-error-handling-examples/tree/master)
-- [good tut rust basic](http://saidvandeklundert.net/learn/)
+- [good tutorial of rust basic](http://saidvandeklundert.net/learn/)
 
 ## git editor set of vi
 
@@ -48,6 +48,19 @@ println!("that => {:?}",_that);
 
 }
 // cargo run --example 01_simple_enums
+/*
+export FILE_NAME="01_simple_enums.rs"
+export FILE_DIR_NAME="./examples"
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
 EoF
 ```
 
