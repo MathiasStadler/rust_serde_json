@@ -873,13 +873,11 @@ let invalid_json_string = r#"
     "key to a list" : [1 ,2]
 }"#;
 
-
-
 // let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
 // instead /w .expect("unable to deserialize JSON");
 let json_serialized: serde_json::Value = serde_json::from_str(&json_string).expect("unable to deserialize JSON");
 
-EoF
+
 println!("Ok => {:?}", &json_serialized);
 // Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
 
@@ -887,7 +885,7 @@ println!("Ok => {:?}", &json_serialized);
 // instead /w .expect("unable to deserialize JSON");
 let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).expect("unable to deserialize JSON");
 // NOT call because call panic!
-println!("Err => {:?}", &wrong_json_serialized);
+println!("Err => {:?}", &invalid_json_serialized);
 //called `Result::unwrap()` on an `Err` value: Error("expected value", line: 4, column: 19)
 
 }
