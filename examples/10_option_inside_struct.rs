@@ -33,7 +33,7 @@ git add $FILE_DIR_NAME/$FILE_NAME
 git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 # cargo install --list
-cargo update --workspace
+# cargo update --workspace
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo check --verbose
