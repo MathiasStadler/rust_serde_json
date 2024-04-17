@@ -36,8 +36,8 @@ git push
 # cargo update --workspace
 cargo clippy --fix
 cargo clippy --fix --examples
-cargo check --verbose
-cargo check --verbose --examples
+# cargo check --verbose
+# cargo check --verbose --examples
 cargo fmt -- --emit=files
 git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
