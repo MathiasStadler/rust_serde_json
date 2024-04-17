@@ -849,3 +849,67 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
+
+## example with use unwrap error handling with expect
+
+```rust
+export EXAMPLE_SCRIPT_FILE="15_result_unwrap_error_handling_with_expect.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+fn main(){
+   let json_string = r#"
+{
+    "key": "value",
+    "another key": "another value",
+    "key to a list" : [1 ,2]
+}"#;
+
+let invalid_json_string = r#"
+{
+    // The Error is 
+    "key" "value",
+    "another key": "another value",
+    "key to a list" : [1 ,2]
+}"#;
+
+
+
+// let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
+// instead /w .expect("unable to deserialize JSON");
+let json_serialized: serde_json::Value = serde_json::from_str(&json_string).expect("unable to deserialize JSON");
+
+EoF
+println!("Ok => {:?}", &json_serialized);
+// Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
+
+// let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
+// instead /w .expect("unable to deserialize JSON");
+let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).expect("unable to deserialize JSON");
+// NOT call because call panic!
+println!("Err => {:?}", &wrong_json_serialized);
+//called `Result::unwrap()` on an `Err` value: Error("expected value", line: 4, column: 19)
+
+}
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
