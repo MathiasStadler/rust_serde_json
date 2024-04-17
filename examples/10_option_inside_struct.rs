@@ -18,6 +18,12 @@ fn main() {
         age: None,
     };
     println!("{:?}\n{:?}", marie, jan);
+
+    let mut vec = vec![0, 1];
+    let a = vec.pop();
+    let b = vec.pop();
+    let c = vec.pop();
+    println!("{:?}\n{:?}\n{:?}\n", a, b, c);
 }
 
 /*

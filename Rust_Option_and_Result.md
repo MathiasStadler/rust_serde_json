@@ -582,3 +582,11 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
+
+## Real world example /w vec->pop
+
+- An example where the Option is used inside Rust is the pop method for vectors. This method returns an
+
+```rust
+Option<T>
+```.
