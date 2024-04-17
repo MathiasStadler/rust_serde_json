@@ -1,4 +1,3 @@
-
 #[derive(Debug)]
 #[allow(dead_code)]
 struct Person {
@@ -8,8 +7,7 @@ struct Person {
     age: Option<i32>,
 }
 
-fn main(){
-
+fn main() {
     let marie = Person {
         name: String::from("Marie"),
         age: Some(2),
