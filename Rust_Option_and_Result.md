@@ -911,3 +911,6 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
+
+## continue here [Using ? and handling different errors](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+
