@@ -1,15 +1,29 @@
 // use serde_json::json;
 
-fn main() {
-    let json_string = r#"
+fn main(){
+   let json_string = r#"
 {
     "key": "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
 }"#;
-    let json_serialized: serde_json::Value = serde_json::from_str(json_string).unwrap();
-    println!("{:?}", &json_serialized);
-    // Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
+
+let wrong_json_string = r#"
+{
+    // The Error is ::
+    "key":: "value",
+    "another key": "another value",
+    "key to a list" : [1 ,2]
+}"#;
+
+let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
+println!("Ok => {:?}", &json_serialized);
+// Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
+
+let wrong_json_serialized: serde_json::Value = serde_json::from_str(&wrong_json_string).unwrap();
+println!("Err => {:?}", &wrong_json_serialized);
+//called  on an  value: Error("expected value", line: 4, column: 19)
+
 }
 
 /*
