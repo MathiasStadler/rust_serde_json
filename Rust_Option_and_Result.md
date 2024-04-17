@@ -676,8 +676,10 @@ fn check_length(s: &str, min: usize) -> Result<&str, String> {
 fn main(){
     let a = check_length("some str", 5);
     let b = check_length("another str", 300);
-    dbg!(a); // Ok("some str",)
-    dbg!(b); // Err("'another str' is not long enough!",)
+    // generate
+    // warning: unused `Result` that must be used dbg!
+    _= dbg!(a); // Ok("some str",)
+    _= dbg!(b); // Err("'another str' is not long enough!",)
 }
 
 /*

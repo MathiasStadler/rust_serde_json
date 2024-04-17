@@ -1,18 +1,23 @@
+
 fn check_length(s: &str, min: usize) -> Result<&str, String> {
     if s.chars().count() >= min {
-        Ok(s)
+        return Ok(s)
     } else {
-        Err(format!("'{}' is not long enough!", s))
+        return Err(format!("'{}' is not long enough!", s))
     }
 }
 
-fn main() {
-    let a = check_length("some str", 5);
-    let b = check_length("another str", 300);
-    #[allow(unused_must_use)]
-    dbg!(a); // Ok("some str",)
-    #[allow(unused_must_use)]
-    dbg!(b); // Err("'another str' is not long enough!",)
+fn main(){
+    let _a = check_length("some str", 5);
+    
+    let _b = check_length("another str", 300);
+    
+    // generate
+    // warning: unused  that must be used dbg!
+    // marker with underline
+    
+    _= dbg!(_a); // Ok("some str",)
+    _= dbg!(_b); // Err("'another str' is not long enough!",)
 }
 
 /*
