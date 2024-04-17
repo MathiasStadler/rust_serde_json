@@ -8,6 +8,7 @@
         "reqwest",
         "rustfmt",
         "serde",
-        "struct"
+        "struct",
+        "usize"
     ]
 }
