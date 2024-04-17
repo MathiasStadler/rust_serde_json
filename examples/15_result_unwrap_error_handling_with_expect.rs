@@ -1,13 +1,12 @@
-
-fn main(){
-   let json_string = r#"
+fn main() {
+    let json_string = r#"
 {
     "key": "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
 }"#;
 
-let invalid_json_string = r#"
+    let invalid_json_string = r#"
 {
     // The Error is 
     "key" "value",
@@ -15,21 +14,21 @@ let invalid_json_string = r#"
     "key to a list" : [1 ,2]
 }"#;
 
-// let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
-// instead /w .expect("unable to deserialize JSON");
-let json_serialized: serde_json::Value = serde_json::from_str(&json_string).expect("unable to deserialize JSON");
+    // let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
+    // instead /w .expect("unable to deserialize JSON");
+    let json_serialized: serde_json::Value =
+        serde_json::from_str(json_string).expect("unable to deserialize JSON");
 
+    println!("Ok => {:?}", &json_serialized);
+    // Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
 
-println!("Ok => {:?}", &json_serialized);
-// Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
-
-// let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
-// instead /w .expect("unable to deserialize JSON");
-let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).expect("unable to deserialize JSON");
-// NOT call because call panic!
-println!("Err => {:?}", &invalid_json_serialized);
-//called  on an  value: Error("expected value", line: 4, column: 19)
-
+    // let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
+    // instead /w .expect("unable to deserialize JSON");
+    let invalid_json_serialized: serde_json::Value =
+        serde_json::from_str(invalid_json_string).expect("unable to deserialize JSON");
+    // NOT call because call panic!
+    println!("Err => {:?}", &invalid_json_serialized);
+    //called  on an  value: Error("expected value", line: 4, column: 19)
 }
 
 /*
