@@ -470,7 +470,7 @@ pub fn main(){
 
     match _return_option {
         Some(contains_char) => println!("Some => Letter contains string {:?}", contains_char),
-        None => println!("None => Letter NOT contains string"),
+        None => println!("unwrap None not possible instead => None => Letter NOT contains string"),
         }
     }
     {
@@ -530,3 +530,52 @@ EoF
 ```
 
 ## continue here => [Optional values inside a struct](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+
+## Optional values inside a struct
+
+- We can also use the Option inside a struct. This might be useful in case a field may or may not have any value
+
+```rust
+export EXAMPLE_SCRIPT_FILE="10_option_inside_struct.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+#[derive(Debug)]
+struct Person {
+    name: String,
+    age: Option<i32>,
+}
+
+fn main(){
+
+    let marie = Person {
+        name: String::from("Marie"),
+        age: Some(2),
+    };
+
+    let jan = Person {
+        name: String::from("Jan"),
+        age: None,
+    };
+    println!("{:?}\n{:?}", marie, jan);
+}
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo install --list
+cargo update --workspace 
+cargo clippy --fix
+cargo clippy --fix --examples
+cargo check --verbose
+cargo check --verbose --examples 
+cargo fmt -- --emit=files
+git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
