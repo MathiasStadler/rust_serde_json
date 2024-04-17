@@ -1,8 +1,7 @@
-
-use serde_json::json;
+// use serde_json::json;
 
 fn main(){
-   et json_string = r#"
+   let json_string = r#"
 {
     "key": "value",
     "another key": "another value",

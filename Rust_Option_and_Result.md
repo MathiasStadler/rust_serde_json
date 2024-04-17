@@ -795,11 +795,10 @@ impl<T, E: fmt::Debug> Result<T, E> {
 export EXAMPLE_SCRIPT_FILE="14_result_unwrap.rs"
 export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
-
-use serde_json::json;
+// use serde_json::json;
 
 fn main(){
-   et json_string = r#"
+   let json_string = r#"
 {
     "key": "value",
     "another key": "another value",
