@@ -12,6 +12,7 @@ fn main() {
     // dbg!(a); // Ok("some str",)
     // dbg!(b); // Err("'another str' is not long enough!",)
 
+    // instead /w match
     //Ok
 
     let func_return = check_length("some str", 5);
@@ -53,3 +54,5 @@ git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NA
 git push
 cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
 */
+
+

@@ -722,9 +722,9 @@ fn main(){
     // let b = check_length("another str", 300);
     // dbg!(a); // Ok("some str",)
     // dbg!(b); // Err("'another str' is not long enough!",)
-
-    //Ok 
     
+    // instead /w match
+    //Ok 
     let func_return = check_length("some str", 5);
     let a_str = match func_return {
     Ok(a_str) => a_str,
@@ -732,7 +732,7 @@ fn main(){
     // after check_length
     };
     println!("Length is Ok -> this str is long enough! => {} <=",a_str);
-    
+    println!("Can use the variable => {} ",a_str);
 
     // instead /w match
     // Err
@@ -787,4 +787,48 @@ impl<T, E: fmt::Debug> Result<T, E> {
     ...
 }
 
+```
+
+## example with use unwrap
+
+```rust
+export EXAMPLE_SCRIPT_FILE="14_result_unwrap.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+use serde_json::json;
+
+fn main(){
+   et json_string = r#"
+{
+    "key": "value",
+    "another key": "another value",
+    "key to a list" : [1 ,2]
+}"#;
+let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
+println!("{:?}", &json_serialized);
+// Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
+
+}
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
 ```
