@@ -723,16 +723,29 @@ fn main(){
     // dbg!(a); // Ok("some str",)
     // dbg!(b); // Err("'another str' is not long enough!",)
 
-    // instead /w match
-    let func_return = check_length("some string literal", 100);
+    //Ok 
+    
+    let func_return = check_length("some str", 5);
     let a_str = match func_return {
+    Ok(a_str) => a_str,
+    Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
+    // after check_length
+    };
+    println!("Length is Ok -> this str is long enough! => {} <=",a_str);
+    
+
+    // instead /w match
+    // Err
+    let func_return = check_length("some string literal", 100);
+    #[allow(unused_variables)]
+    let _a_str = match func_return {
     Ok(a_str) => a_str,
     Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
 };
 // thread 'main' panicked at 'Problem running 'check_length':
 // "'some string literal' is not long enough!"'
 
-}
+}//end of fn main
 
 /*
 export FILE_NAME=$EXAMPLE_SCRIPT_FILE
@@ -757,3 +770,21 @@ EoF
 ```
 
 ## continue here =>  [Unwrapping the Result](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+
+## Unwrapping the Result
+
+- Instead of using a match expression, there is also a shortcut that you’ll come across very often. This shortcut is the unwrap method that is defined for the Result enum
+
+```rust
+impl<T, E: fmt::Debug> Result<T, E> {
+    ...
+    pub fn unwrap(self) -> T {
+        match self {
+            Ok(t) => t,
+            Err(e) => unwrap_failed("called `Result::unwrap()` on an `Err` value", &e),
+        }
+    }
+    ...
+}
+
+```
