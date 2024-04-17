@@ -674,12 +674,15 @@ fn check_length(s: &str, min: usize) -> Result<&str, String> {
 }
 
 fn main(){
-    let a = check_length("some str", 5);
-    let b = check_length("another str", 300);
-    // generate
-    // warning: unused `Result` that must be used dbg!
-    _= dbg!(a); // Ok("some str",)
-    _= dbg!(b); // Err("'another str' is not long enough!",)
+    let _a = check_length("some str", 5);
+
+    let _b = check_length("another str", 300);
+
+    // generate warning: unused  that must be used dbg!
+    // marker with underline => generate NOT warning
+
+    _ = dbg!(_a); // Ok("some str",)
+    _ = dbg!(_b); // Err("'another str' is not long enough!",)
 }
 
 /*
