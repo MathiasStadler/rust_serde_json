@@ -661,15 +661,77 @@ pub enum Result<T, E> {
 ## Matching on the Result
 
 ```rust
-export EXAMPLE_SCRIPT_FILE="12_matching_on_the_result.rs"
+export EXAMPLE_SCRIPT_FILE="12_dbg_on_the_result.rs"
 export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
-
+fn check_length(s: &str, min: usize) -> Result<&str, String> {
+    if s.chars().count() >= min {
+        return Ok(s)
+    } else {
+        return Err(format!("'{}' is not long enough!", s))
+    }
+}
 
 fn main(){
+    let a = check_length("some str", 5);
+    let b = check_length("another str", 300);
+    dbg!(a); // Ok("some str",)
+    dbg!(b); // Err("'another str' is not long enough!",)
+}
 
-    
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
+
+## We can use a __match__ expression to deal with the Result
+
+```rust
+export EXAMPLE_SCRIPT_FILE="13_matching_on_the_result.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+fn check_length(s: &str, min: usize) -> Result<&str, String> {
+    if s.chars().count() >= min {
+        return Ok(s)
+    } else {
+        return Err(format!("'{}' is not long enough!", s))
+    }
+}
+
+fn main(){
+    // let a = check_length("some str", 5);
+    // let b = check_length("another str", 300);
+    // dbg!(a); // Ok("some str",)
+    // dbg!(b); // Err("'another str' is not long enough!",)
+
+    // instead /w match
+    let func_return = check_length("some string literal", 100);
+    let a_str = match func_return {
+    Ok(a_str) => a_str,
+    Err(error) => panic!("Problem running 'check_length':\n {:?}", error),
+};
+// thread 'main' panicked at 'Problem running 'check_length':
+// "'some string literal' is not long enough!"'
+
 }
 
 /*

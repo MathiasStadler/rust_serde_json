@@ -1,27 +1,21 @@
+
 fn check_length(s: &str, min: usize) -> Result<&str, String> {
     if s.chars().count() >= min {
-        Ok(s)
+        return Ok(s)
     } else {
-        Err(format!("'{}' is not long enough!", s))
+        return Err(format!("'{}' is not long enough!", s))
     }
 }
 
-fn main() {
+fn main(){
     let a = check_length("some str", 5);
     let b = check_length("another str", 300);
-    
-//#[allow(unused_must_use)]
-//#[allow(unused_attributes)]
-    
-    
     dbg!(a); // Ok("some str",)
-
-
     dbg!(b); // Err("'another str' is not long enough!",)
 }
 
 /*
-export FILE_NAME=12_matching_on_the_result.rs
+export FILE_NAME=12_dbg_on_the_result.rs
 export FILE_DIR_NAME=examples
 git add $FILE_DIR_NAME/$FILE_NAME
 git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
