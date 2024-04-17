@@ -727,7 +727,7 @@ fn main(){
     let func_return = check_length("some string literal", 100);
     let a_str = match func_return {
     Ok(a_str) => a_str,
-    Err(error) => panic!("Problem running 'check_length':\n {:?}", error),
+    Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
 };
 // thread 'main' panicked at 'Problem running 'check_length':
 // "'some string literal' is not long enough!"'
@@ -755,3 +755,5 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
+
+## continue here =>  [Unwrapping the Result](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
