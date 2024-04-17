@@ -1,8 +1,8 @@
 fn check_length(s: &str, min: usize) -> Result<&str, String> {
     if s.chars().count() >= min {
-        return Ok(s);
+        Ok(s)
     } else {
-        return Err(format!("'{}' is not long enough!", s));
+        Err(format!("'{}' is not long enough!", s))
     }
 }
 

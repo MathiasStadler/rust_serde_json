@@ -1,8 +1,8 @@
 fn check_length(s: &str, min: usize) -> Result<&str, String> {
     if s.chars().count() >= min {
-        return Ok(s);
+        Ok(s)
     } else {
-        return Err(format!("'{}' is not long enough!", s));
+        Err(format!("'{}' is not long enough!", s))
     }
 }
 
@@ -14,7 +14,7 @@ fn main() {
 
     // instead /w match
     let func_return = check_length("some string literal", 100);
-    let a_str = match func_return {
+    let _a_str = match func_return {
         Ok(a_str) => a_str,
         Err(error) => panic!("Problem running 'check_length':\n {:?}", error),
     };
