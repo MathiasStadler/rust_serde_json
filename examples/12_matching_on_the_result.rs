@@ -9,13 +9,11 @@ fn check_length(s: &str, min: usize) -> Result<&str, String> {
 fn main() {
     let a = check_length("some str", 5);
     let b = check_length("another str", 300);
-    
-//#[allow(unused_must_use)]
-//#[allow(unused_attributes)]
-    
-    
-    dbg!(a); // Ok("some str",)
 
+    //#[allow(unused_must_use)]
+    //#[allow(unused_attributes)]
+
+    dbg!(a); // Ok("some str",)
 
     dbg!(b); // Err("'another str' is not long enough!",)
 }
