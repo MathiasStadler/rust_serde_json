@@ -6,7 +6,7 @@ use std::io::Write;
 fn main() {
     let valid_json_string = r#"{
         "name": "MyName",
-        "age": 69
+        "age": "69"
     }
 "#;
 
@@ -32,7 +32,7 @@ fn main() {
     #[allow(unused_variables)]
     let invalid_json_string = r#"{
     invalid_key_NOT_STRING : "MyName",
-    "age": 69
+    "age": "69"
 }
 "#;
 
@@ -56,8 +56,8 @@ fn main() {
 /*
 export FILE_NAME=16_generate_json_file.rs
 export FILE_DIR_NAME=examples
-git add $FILE_DIR_NAME/$FILE_NAME
-git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git add examples/17_using_question_mark_and_handling_different_errors.rs
+git commit --all --message="-> Add BEFORE housekeeping => examples/17_using_question_mark_and_handling_different_errors.rs"
 git push
 # cargo install --list
 # cargo update --workspace
@@ -68,7 +68,7 @@ cargo clippy --fix --examples
 cargo check
 cargo check --examples
 cargo fmt -- --emit=files
-git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git commit --all --message="-> Add AFTER housekeeping => examples/17_using_question_mark_and_handling_different_errors.rs"
 git push
-cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
+cargo run --example 17_using_question_mark_and_handling_different_errors
 */
