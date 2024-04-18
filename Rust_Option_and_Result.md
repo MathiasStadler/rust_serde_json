@@ -928,8 +928,7 @@ cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 // https://stackoverflow.com/questions/73505520/how-to-write-a-string-to-file
 
 use std::fs::OpenOptions;
-use std::io;
-
+ use std::io::Write;
 fn main() {
 
 let json_string = r#"
