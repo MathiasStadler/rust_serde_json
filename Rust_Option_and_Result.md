@@ -926,8 +926,9 @@ export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 // FROM HERE
 // https://stackoverflow.com/questions/73505520/how-to-write-a-string-to-file
+
 use std::fs::OpenOptions;
-// use std::io::*;
+use std::io;
 
 fn main() {
 
