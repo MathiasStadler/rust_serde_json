@@ -648,7 +648,7 @@ EoF
 
 ## The result
 
-- Another important construct in Rust is the Result enum. Same as with the Option, the Result is an enum
+- Another important construct in Rust is the __Result__ enum. Same as with the Option, the Result is an enum
 
 ```rust
 pub enum Result<T, E> {
