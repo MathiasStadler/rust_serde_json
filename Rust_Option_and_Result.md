@@ -918,10 +918,69 @@ EoF
 
 ## continue here => [Using ? and handling different errors](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
 
+## generate json test file
+
+```rust
+export EXAMPLE_SCRIPT_FILE="16_generate_json_file.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+// FROM HERE
+// https://stackoverflow.com/questions/73505520/how-to-write-a-string-to-file
+
+ let json_string = r#"
+{
+    "key": "value",
+    "another key": "another value",
+    "key to a list" : [1 ,2]
+}"#;
+
+
+
+fn main() {
+    
+    // create file
+    let mut test_file = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .open("json.txt")
+        .unwrap();
+    
+    //  write json sting to file
+    let eg = test_file.write_all(json_string.as_bytes());
+    match eg {
+        Ok(()) => println!("OK"),
+        Err(e) => println!("{:?}", e),
+    }
+    
+}
+
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
+
 ## Using ? and handling different errors
 
 ```rust
-export EXAMPLE_SCRIPT_FILE="16_using_question_mark_and_handling_different_errors.rs"
+export EXAMPLE_SCRIPT_FILE="17_using_question_mark_and_handling_different_errors.rs"
 export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
