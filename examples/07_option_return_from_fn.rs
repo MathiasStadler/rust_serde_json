@@ -1,19 +1,18 @@
 // Returns the text if it contains target character, None otherwise:
 fn contains_char(text: &str, target_c: char) -> Option<&str> {
     if text.chars().any(|ch| ch == target_c) {
-        return Some(text);
+        Some(text)
     } else {
-        return None;
+        None
     }
 }
 
-pub fn main(){
+pub fn main() {
+    let a = contains_char("Rust in action", 'a');
+    let q = contains_char("Rust in action", 'q');
 
-let a = contains_char("Rust in action", 'a');
-let q = contains_char("Rust in action", 'q');
-
-println!("{:?}", a);
-println!("{:?}", q);
+    println!("{:?}", a);
+    println!("{:?}", q);
 }
 
 /*
@@ -25,9 +24,9 @@ git push
 cargo clippy --fix
 cargo clippy --fix --examples
 // cargo check --verbose
-// cargo check --verbose --examples 
-cargo check 
-cargo check --examples 
+// cargo check --verbose --examples
+cargo check
+cargo check --examples
 cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
