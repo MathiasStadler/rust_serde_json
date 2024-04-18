@@ -933,7 +933,7 @@ fn main() {
 
 let json_string = r#"{
         "name": "MyName",
-        "age": "69"
+        "age": 69
     }
 "#;
     
