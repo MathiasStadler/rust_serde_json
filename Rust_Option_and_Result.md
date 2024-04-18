@@ -1032,7 +1032,7 @@ fn main(){
     // _ <- underline avoid err
     // warning: unused  that must be used dbg!
     // marker with underline
-    let _x = file_to_json("/tmp/json.txt");
+    let _x = file_to_json("/tmp/valid_json.txt");
     let _y = file_to_json("/tmp/invalid_json.txt");
     let _z = file_to_json("/tmp/non_existing_file.txt");
 
