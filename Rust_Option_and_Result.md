@@ -879,7 +879,7 @@ let invalid_json_string = r#"
 
 // let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
 // instead /w .expect("unable to deserialize JSON");
-let json_serialized: serde_json::Value = serde_json::from_str(&json_string).expect("unable to deserialize JSON");
+let json_serialized: serde_json::Value = serde_json::from_str(&json_string).expect("MESSAGE EXPECT => unable to deserialize JSON");
 
 
 println!("Ok => {:?}", &json_serialized);
@@ -887,8 +887,8 @@ println!("Ok => {:?}", &json_serialized);
 
 // let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
 // instead /w .expect("unable to deserialize JSON");
-let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).expect("unable to deserialize JSON");
-// NOT call because call panic!
+let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).expect("MESSAGE EXPECT => unable to deserialize JSON");
+// Is NOT executed because the call of the macro panic!
 println!("Err => {:?}", &invalid_json_serialized);
 //called `Result::unwrap()` on an `Err` value: Error("expected value", line: 4, column: 19)
 
@@ -916,4 +916,101 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
-## continue here [Using ? and handling different errors](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+## continue here => [Using ? and handling different errors](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+
+## Using ? and handling different errors
+
+```rust
+export EXAMPLE_SCRIPT_FILE="16_Using_question_mark_and_handling_different_errors.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+use serde::{Deserialize, Serialize};
+use std::error::Error;
+use std::fs;
+
+// Debug allows us to print the struct.
+// Deserialize and Serialize adds decoder and encoder capabilities to the struct.
+#[derive(Debug, Deserialize, Serialize)]
+struct Person {
+    name: String,
+    age: usize,
+}
+
+fn file_to_json(s: &str) -> Result<Person, Box<dyn Error>> {
+    let text = fs::read_to_string(s)?;
+    let marie: Person = serde_json::from_str(&text)?;
+    Ok(marie)
+}
+
+
+fn main(){
+
+    // avoid generate clippy err
+    // warning: unused  that must be used dbg!
+    // marker with underline
+    let _x = file_to_json("json.txt");
+    let _y = file_to_json("invalid_json.txt");
+    let _z = file_to_json("non_existing_file.txt");
+
+    _ = dbg!(_x);
+    _ = dbg!(_y);
+    _ = dbg!(_z);
+}
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
+
+## rust script template
+
+```rust
+export EXAMPLE_SCRIPT_FILE="99_template.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+fn main(){
+
+    println!("template");
+}
+
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
