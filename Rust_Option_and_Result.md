@@ -927,16 +927,14 @@ cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 // FROM HERE
 // https://stackoverflow.com/questions/73505520/how-to-write-a-string-to-file
 
- let json_string = r#"
+fn main() {
+    
+let json_string = r#"
 {
     "key": "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
 }"#;
-
-
-
-fn main() {
     
     // create file
     let mut test_file = OpenOptions::new()
