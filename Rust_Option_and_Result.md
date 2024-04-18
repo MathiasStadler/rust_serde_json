@@ -941,6 +941,7 @@ let json_string = r#"{
     let mut test_file = OpenOptions::new()
         .truncate(true)
         // .create_new(true)
+        .create(true)
         .read(true)
         .write(true)
         .open("/tmp/json.txt")
