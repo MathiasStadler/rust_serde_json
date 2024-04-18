@@ -16,7 +16,7 @@ fn main() {
     let mut test_file = OpenOptions::new()
         .read(true)
         .write(true)
-        .open("json.txt")
+        .open("./json.txt")
         .unwrap();
 
     //  write json sting to file
