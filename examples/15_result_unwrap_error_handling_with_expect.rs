@@ -25,7 +25,7 @@ fn main() {
     // let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
     // instead /w .expect("unable to deserialize JSON");
     let invalid_json_serialized: serde_json::Value =
-        serde_json::from_str(invalid_json_string).expect("unable to deserialize JSON");
+        serde_json::from_str(invalid_json_string).expect("MESSAGE EXPECT => unable to deserialize JSON");
     // NOT call because call panic!
     println!("Err => {:?}", &invalid_json_serialized);
     //called  on an  value: Error("expected value", line: 4, column: 19)
