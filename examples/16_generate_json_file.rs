@@ -2,30 +2,34 @@
 // https://stackoverflow.com/questions/73505520/how-to-write-a-string-to-file
 
 use std::fs::OpenOptions;
-use std::io::Write;
+ use std::io::Write;
 fn main() {
-    let json_string = r#"
+
+let json_string = r#"
 {
     "key": "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
 }"#;
-
+    
     // create file
     let mut test_file = OpenOptions::new()
+        .truncate(true)
         .create_new(true)
         .read(true)
         .write(true)
         .open("/tmp/json.txt")
         .unwrap();
-
+    
     //  write json sting to file
     let eg = test_file.write_all(json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
+    
 }
+
 
 /*
 export FILE_NAME=16_generate_json_file.rs
