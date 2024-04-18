@@ -5,7 +5,6 @@ use std::fs::OpenOptions;
 use std::io::*;
 
 fn main() {
-    
     let json_string = r#"
 {
     "key": "value",
