@@ -980,10 +980,10 @@ fn main() {
 }
 
 /*
-export FILE_NAME=16_generate_json_file.rs
-export FILE_DIR_NAME=examples
-git add $FILE_DIR_NAME/$FILE_NAME
-git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
 # cargo install --list
 # cargo update --workspace
@@ -994,9 +994,9 @@ cargo clippy --fix --examples
 cargo check
 cargo check --examples
 cargo fmt -- --emit=files
-git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
-cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
