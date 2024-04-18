@@ -18,7 +18,7 @@ fn file_to_json(s: &str) -> Result<Person, Box<dyn Error>> {
 
 fn main() {
     // _ <- underline avoid err
-    // warning: unused  that must be used dbg!
+    // warning: unused that must be used dbg!
     // marker with underline
     let _x = file_to_json("/tmp/json.txt");
     let _y = file_to_json("/tmp/invalid_json.txt");
