@@ -712,7 +712,7 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
-## We can use a __match__ expression to deal with the Result
+## We can use a match expression to deal with the Result
 
 ```rust
 export EXAMPLE_SCRIPT_FILE="13_matching_on_the_result.rs"
@@ -739,8 +739,8 @@ fn main(){
     let a_str = match func_return {
     Ok(a_str) => a_str,
     Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
+        };
     // after check_length
-    };
     println!("Length is Ok -> this str is long enough! => {} <=",a_str);
     println!("Can use the variable => {} ",a_str);
 
@@ -805,7 +805,6 @@ impl<T, E: fmt::Debug> Result<T, E> {
 export EXAMPLE_SCRIPT_FILE="14_result_unwrap.rs"
 export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
-// use serde_json::json;
 
 fn main(){
    let json_string = r#"
@@ -815,7 +814,7 @@ fn main(){
     "key to a list" : [1 ,2]
 }"#;
 
-let wrong_json_string = r#"
+let invalid_json_string = r#"
 {
     // The Error is ::
     "key":: "value",
@@ -827,8 +826,8 @@ let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwr
 println!("Ok => {:?}", &json_serialized);
 // Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
 
-let wrong_json_serialized: serde_json::Value = serde_json::from_str(&wrong_json_string).unwrap();
-println!("Err => {:?}", &wrong_json_serialized);
+let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
+println!("Err => {:?}", &invalid_json_serialized);
 //called `Result::unwrap()` on an `Err` value: Error("expected value", line: 4, column: 19)
 
 }
