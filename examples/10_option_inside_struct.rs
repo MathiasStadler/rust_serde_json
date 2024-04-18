@@ -1,3 +1,4 @@
+
 #[derive(Debug)]
 #[allow(dead_code)]
 struct Person {
@@ -7,7 +8,8 @@ struct Person {
     age: Option<i32>,
 }
 
-fn main() {
+fn main(){
+
     let marie = Person {
         name: String::from("Marie"),
         age: Some(2),
@@ -18,12 +20,6 @@ fn main() {
         age: None,
     };
     println!("{:?}\n{:?}", marie, jan);
-
-    let mut vec = vec![0, 1];
-    let a = vec.pop();
-    let b = vec.pop();
-    let c = vec.pop();
-    println!("{:?}\n{:?}\n{:?}\n", a, b, c);
 }
 
 /*
@@ -33,13 +29,11 @@ git add $FILE_DIR_NAME/$FILE_NAME
 git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 # cargo install --list
-# cargo update --workspace
+cargo update --workspace 
 cargo clippy --fix
 cargo clippy --fix --examples
-# cargo check --verbose
-# cargo check --verbose --examples
-cargo check
-cargo check --examples
+cargo check --verbose
+cargo check --verbose --examples 
 cargo fmt -- --emit=files
 git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push

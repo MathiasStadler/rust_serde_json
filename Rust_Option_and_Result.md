@@ -579,8 +579,10 @@ git push
 cargo update --workspace 
 cargo clippy --fix
 cargo clippy --fix --examples
-cargo check --verbose
-cargo check --verbose --examples 
+// cargo check --verbose
+// cargo check --verbose --examples 
+cargo check
+cargo check --examples
 cargo fmt -- --emit=files
 git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -591,11 +593,8 @@ EoF
 
 ## Real world example /w vec->pop
 
-- An example where the Option is used inside Rust is the pop method for vectors. This method returns an
-
-```rust
-Option<T>
-```.
+- An example where the Option is used inside Rust is the pop method for vectors
+- - This method return an generic Option
 
 ```rust
 export EXAMPLE_SCRIPT_FILE="11_option_inside_struct_real_example_pop.rs"
