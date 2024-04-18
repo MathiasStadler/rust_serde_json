@@ -931,12 +931,11 @@ use std::fs::OpenOptions;
  use std::io::Write;
 fn main() {
 
-let json_string = r#"
-{
-    "key": "value",
-    "another key": "another value",
-    "key to a list" : [1 ,2]
-}"#;
+let json_string = r#"{
+        "name": "MyName",
+        "age": "69"
+    }
+"#;
     
     // create file
     let mut test_file = OpenOptions::new()
