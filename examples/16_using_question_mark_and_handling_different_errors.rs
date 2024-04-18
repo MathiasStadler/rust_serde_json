@@ -1,3 +1,4 @@
+
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::fs;
@@ -16,8 +17,10 @@ fn file_to_json(s: &str) -> Result<Person, Box<dyn Error>> {
     Ok(marie)
 }
 
-fn main() {
-    // avoid generate clippy err
+
+fn main(){
+
+    // _ <- underline avoid err
     // warning: unused  that must be used dbg!
     // marker with underline
     let _x = file_to_json("json.txt");
@@ -30,7 +33,7 @@ fn main() {
 }
 
 /*
-export FILE_NAME=16_Using_question_mark_and_handling_different_errors.rs
+export FILE_NAME=16_using_question_mark_and_handling_different_errors.rs
 export FILE_DIR_NAME=examples
 git add $FILE_DIR_NAME/$FILE_NAME
 git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"

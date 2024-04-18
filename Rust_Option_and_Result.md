@@ -921,7 +921,7 @@ EoF
 ## Using ? and handling different errors
 
 ```rust
-export EXAMPLE_SCRIPT_FILE="16_Using_question_mark_and_handling_different_errors.rs"
+export EXAMPLE_SCRIPT_FILE="16_using_question_mark_and_handling_different_errors.rs"
 export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
@@ -946,7 +946,7 @@ fn file_to_json(s: &str) -> Result<Person, Box<dyn Error>> {
 
 fn main(){
 
-    // avoid generate clippy err
+    // _ <- underline avoid err
     // warning: unused  that must be used dbg!
     // marker with underline
     let _x = file_to_json("json.txt");
