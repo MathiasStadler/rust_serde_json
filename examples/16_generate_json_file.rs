@@ -5,14 +5,13 @@ use std::fs::OpenOptions;
 use std::io;
 
 fn main() {
-
-let json_string = r#"
+    let json_string = r#"
 {
     "key": "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
 }"#;
-    
+
     // create file
     let mut test_file = OpenOptions::new()
         .create_new(true)
@@ -20,16 +19,14 @@ let json_string = r#"
         .write(true)
         .open("/tmp/json.txt")
         .unwrap();
-    
+
     //  write json sting to file
     let eg = test_file.write_all(json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
-    
 }
-
 
 /*
 export FILE_NAME=16_generate_json_file.rs
