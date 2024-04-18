@@ -17,7 +17,7 @@ fn main() {
         .create(true)
         .read(true)
         .write(true)
-        .open("/tmp/json.txt")
+        .open("/tmp/valid_json.txt")
         .unwrap();
 
     //  write valid json sting to file
@@ -42,7 +42,7 @@ fn main() {
         .create(true)
         .read(true)
         .write(true)
-        .open("/tmp/json.txt")
+        .open("/tmp/invalid_json.txt")
         .unwrap();
 
     //  write invalid json sting to file
