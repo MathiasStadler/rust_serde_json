@@ -1,6 +1,7 @@
 # FROM HERE
 
 - [FROM HERE](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+- - [GITHUB HERE](https://github.com/saidvandeklundert/LearningRust/blob/master/blog/option-and-result/src/main.rs)
 - [FROM HERE](https://www.sheshbabu.com/posts/rust-error-handling/)
 - - [GITHUB REPO](https://github.com/sheshbabu/rust-error-handling-examples/tree/master)
 - [good tutorial of rust basic](http://saidvandeklundert.net/learn/)
@@ -312,7 +313,7 @@ git push
 cargo clippy --fix
 cargo clippy --fix --examples
 cargo check --verbose
-cargo check --verbose --examples 
+cargo check --verbose --examples
 cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -354,9 +355,9 @@ git push
 cargo clippy --fix
 cargo clippy --fix --examples
 // cargo check --verbose
-// cargo check --verbose --examples 
-cargo check 
-cargo check --examples 
+// cargo check --verbose --examples
+cargo check
+cargo check --examples
 cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -402,7 +403,7 @@ match a {
 }
 {
     // way three
-    // The third option is to capture the return of the function 
+    // The third option is to capture the return of the function
     // in a variable and use if let
     let a = contains_char("Rust in action", 'a');
     if let Some(a) = contains_char("Rust in action", 'a') {
@@ -425,8 +426,8 @@ cargo clippy --fix
 cargo clippy --fix --examples
 // cargo check --verbose
 // cargo check --verbose --examples
-cargo check 
-cargo check --examples 
+cargo check
+cargo check --examples
 cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -498,7 +499,7 @@ pub fn main(){
         // the function in a variable and use if let
         if let Some(a) = contains_char("Rust in action", 'a') {
             println!("Some => if let => contains_char returned something: {:?}!", a);
-        } 
+        }
         else {
             println!("None => if let else => contains_char did not return something, so branch off here")
         }
@@ -506,7 +507,7 @@ pub fn main(){
         //None
         if let Some(a) = contains_char("Rust in action", 'x') {
             println!("Some => if let => contains_char returned something: {:?}!", a);
-        } 
+        }
         else {
             println!("None => if let else => contains_char did not return something, so branch off here")
         }
@@ -520,13 +521,13 @@ git add \$FILE_DIR_NAME/\$FILE_NAME
 git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
 cargo install --list
-cargo update --workspace 
+cargo update --workspace
 cargo clippy --fix
 cargo clippy --fix --examples
 // cargo check --verbose
 // cargo check --verbose --examples
-cargo check 
-cargo check --examples 
+cargo check
+cargo check --examples
 cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -576,11 +577,11 @@ git add \$FILE_DIR_NAME/\$FILE_NAME
 git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
 # cargo install --list
-cargo update --workspace 
+cargo update --workspace
 cargo clippy --fix
 cargo clippy --fix --examples
 // cargo check --verbose
-// cargo check --verbose --examples 
+// cargo check --verbose --examples
 cargo check
 cargo check --examples
 cargo fmt -- --emit=files
@@ -648,20 +649,20 @@ EoF
 
 ## The result
 
-- Another important construct in Rust is the __Result__ enum. Same as with the Option, the Result is an enum
+- Another important construct in Rust is the **Result** enum. Same as with the Option, the Result is an enum
 
 ```rust
 pub enum Result<T, E> {
     /// Contains the success value
     Ok(T),
-    /// Contains the error value    
+    /// Contains the error value
     Err(E),
 }
 ```
 
 - The Result enum is generic over 2 types, given the name T and E.
--- The T is used for the OK variant, which is used to express a successful result.
--- The E is used for the Err variant, used to express an error value
+  -- The T is used for the OK variant, which is used to express a successful result.
+  -- The E is used for the Err variant, used to express an error value
 
 ## Matching on the Result
 
@@ -732,9 +733,9 @@ fn main(){
     // let b = check_length("another str", 300);
     // dbg!(a); // Ok("some str",)
     // dbg!(b); // Err("'another str' is not long enough!",)
-    
+
     // instead /w match
-    //Ok 
+    //Ok
     let func_return = check_length("some str", 5);
     let a_str = match func_return {
     Ok(a_str) => a_str,
@@ -779,7 +780,7 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
-## continue here =>  [Unwrapping the Result](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
+## continue here => [Unwrapping the Result](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
 
 ## Unwrapping the Result
 
@@ -871,7 +872,7 @@ fn main(){
 
 let invalid_json_string = r#"
 {
-    // The Error is 
+    // The Error is
     "key" "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
