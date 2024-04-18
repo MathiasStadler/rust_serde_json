@@ -353,8 +353,10 @@ git commit --all --message="add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NA
 git push
 cargo clippy --fix
 cargo clippy --fix --examples
-cargo check --verbose
-cargo check --verbose --examples 
+// cargo check --verbose
+// cargo check --verbose --examples 
+cargo check 
+cargo check --examples 
 cargo fmt -- --emit=files
 git commit --all --message="add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
 git push
@@ -913,4 +915,3 @@ EoF
 ```
 
 ## continue here [Using ? and handling different errors](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
-
