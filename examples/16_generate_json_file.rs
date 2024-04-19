@@ -6,7 +6,7 @@ use std::io::Write;
 fn main() {
     let valid_json_string = r#"{
         "name": "MyName",
-        "age": "69"
+        "age": 69
     }
 "#;
 
@@ -32,7 +32,7 @@ fn main() {
     #[allow(unused_variables)]
     let invalid_json_string = r#"{
     invalid_key_NOT_STRING : "MyName",
-    "age": "69"
+    "age": 69
 }
 "#;
 
