@@ -1126,12 +1126,15 @@ fn get_secrets(s: &str) -> Result<Secrets> {
     Ok(secrets)
 }
     // Ok
-    let _a = get_secrets("missing_file.txt");
+    let _a = get_secrets("/tmp/secrets.json");
     // Result NOT used
     _ = dbg!(_a);
-    // Error
-    let _b = get_secrets("/tmp/secrets.json");
+    // Error Secrets file is missing
+    let _b = get_secrets("missing_file.txt");
     _ = dbg!(_b);
+    //Error - Problem serializing secrets
+    let c = get_secrets("/tmp/invalid_json.txt");
+    _ = dbg!(c);
 }
 
 /*

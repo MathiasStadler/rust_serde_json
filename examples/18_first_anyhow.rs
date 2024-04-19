@@ -28,6 +28,8 @@ fn main() {
     // Error
     let _b = get_secrets("/tmp/missing_file.txt");
     _ = dbg!(_b);
+    let c = get_secrets("/tmp/invalid_json.txt");
+    _ = dbg!(c);
 }
 
 /*
@@ -42,8 +44,8 @@ cargo clippy --fix
 cargo clippy --fix --examples
 # cargo check --verbose
 # cargo check --verbose --examples
-cargo check
-cargo check --examples
+# cargo check
+# cargo check --examples
 cargo fmt -- --emit=files
 git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
