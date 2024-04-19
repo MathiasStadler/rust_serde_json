@@ -970,6 +970,30 @@ fn main() {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
+
+    //create secrets.json
+    #[allow(unused_variables)]
+        let secrets_json_string = r#"{
+        "username": "username",
+        "password": "password"
+    }
+    "#;
+    // invalid
+    let mut invalid_test_file = OpenOptions::new()
+        .truncate(true)
+        // .create_new(true)
+        .create(true)
+        .read(true)
+        .write(true)
+        .open("/tmp/secrets.json.txt")
+        .unwrap();
+
+    //  write invalid json sting to file
+    let eg = secrets_test_file.write_all(secrets_json_string.as_bytes());
+    match eg {
+        Ok(()) => println!("OK"),
+        Err(e) => println!("{:?}", e),
+    }
 }
 
 /*
@@ -997,7 +1021,7 @@ EoF
 ## Using ? and handling different errors
 
 > [!IMPORTANT]  
-> The Err variant is defined as ```rust Box<dyn Error>```, which represents ‘any type of error’
+> The Err variant is defined as `rust Box<dyn Error>`, which represents ‘any type of error’
 
 ```rust
 export EXAMPLE_SCRIPT_FILE="17_using_question_mark_and_handling_different_errors.rs"
@@ -1102,7 +1126,8 @@ fn get_secrets(s: &str) -> Result<Secrets> {
     Ok(secrets)
 }
     let _a = get_secrets("missing_file.txt");
-    _ _ = dbg!(_a);
+    // Result NOT used
+    _ = dbg!(_a);
 }
 
 /*

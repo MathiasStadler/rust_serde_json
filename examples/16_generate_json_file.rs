@@ -13,29 +13,27 @@ fn main() {
     // create valid file
     let mut valid_test_file = OpenOptions::new()
         .truncate(true)
-        // .create_new(true)
         .create(true)
         .read(true)
         .write(true)
         .open("/tmp/valid_json.txt")
         .unwrap();
 
-    //  write valid json sting to file
+    //write valid json sting to file
     let eg = valid_test_file.write_all(valid_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
 
-    // create invalid file
-
+    //create invalid file
     #[allow(unused_variables)]
-    let invalid_json_string = r#"{
-    invalid_key_NOT_STRING : "MyName",
-    "age": 69
-}
-"#;
-
+        let invalid_json_string = r#"{
+        invalid_key_NOT_STRING : "MyName",
+        "age": 69
+    }
+    "#;
+    // invalid
     let mut invalid_test_file = OpenOptions::new()
         .truncate(true)
         // .create_new(true)
@@ -47,6 +45,30 @@ fn main() {
 
     //  write invalid json sting to file
     let eg = invalid_test_file.write_all(invalid_json_string.as_bytes());
+    match eg {
+        Ok(()) => println!("OK"),
+        Err(e) => println!("{:?}", e),
+    }
+
+    //create secrets.json
+    #[allow(unused_variables)]
+        let secrets_json_string = r#"{
+        "username": "username",
+        "password": "password"
+    }
+    "#;
+    // invalid
+    let mut invalid_test_file = OpenOptions::new()
+        .truncate(true)
+        // .create_new(true)
+        .create(true)
+        .read(true)
+        .write(true)
+        .open("/tmp/secrets.json.txt")
+        .unwrap();
+
+    //  write invalid json sting to file
+    let eg = secrets_test_file.write_all(secrets_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
