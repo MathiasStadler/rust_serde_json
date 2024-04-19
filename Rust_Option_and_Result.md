@@ -1125,9 +1125,13 @@ fn get_secrets(s: &str) -> Result<Secrets> {
     }
     Ok(secrets)
 }
+    // Ok
     let _a = get_secrets("missing_file.txt");
     // Result NOT used
     _ = dbg!(_a);
+    // Error
+    let _b = get_secrets("/tmp/secrets.json");
+    _ = dbg!(_b);
 }
 
 /*

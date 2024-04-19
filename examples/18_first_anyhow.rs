@@ -1,28 +1,35 @@
+
 use anyhow::{anyhow, Context, Result};
 use serde::{Deserialize, Serialize};
 use std::fs;
 
-fn main() {
-    #[derive(Debug, Deserialize, Serialize)]
-    // FROM HERE
-    // http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/
-    // search for => using other crates: anyhow
-    struct Secrets {
-        username: String,
-        password: String,
-    }
 
-    fn get_secrets(s: &str) -> Result<Secrets> {
-        let text = fs::read_to_string(s).context("Secrets file is missing.")?;
-        let secrets: Secrets =
-            serde_json::from_str(&text).context("Problem serializing secrets.")?;
-        if secrets.password.chars().count() < 2 {
-            return Err(anyhow!("Password in secrets file is too short"));
-        }
-        Ok(secrets)
+fn main(){
+#[derive(Debug, Deserialize, Serialize)]
+// FROM HERE
+// http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/
+// search for => using other crates: anyhow
+struct Secrets {
+    username: String,
+    password: String,
+}
+
+fn get_secrets(s: &str) -> Result<Secrets> {
+    let text = fs::read_to_string(s).context("Secrets file is missing.")?;
+    let secrets: Secrets =
+        serde_json::from_str(&text).context("Problem serializing secrets.")?;
+    if secrets.password.chars().count() < 2 {
+        return Err(anyhow!("Password in secrets file is too short"));
     }
+    Ok(secrets)
+}
+    // Ok
     let _a = get_secrets("missing_file.txt");
+    // Result NOT used
     _ = dbg!(_a);
+    // Error
+    let _b = get_secrets("/tmp/secrets.json");
+    _ = dbg!(_b);
 }
 
 /*
