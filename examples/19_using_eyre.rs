@@ -1,6 +1,4 @@
-
-fn main(){
-
+fn main() {
     #[allow(unused_imports)]
     use eyre::{EyreHandler, Report, Result, WrapErr};
     use serde::{Deserialize, Serialize};
