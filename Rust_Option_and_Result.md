@@ -1042,6 +1042,9 @@ fn main(){
     _ = dbg!(_z);
 }
 
+// # create test json files before run => 16_generate_json_file.rs
+// ls -l /tmp/*json.txt
+
 /*
 export FILE_NAME=$EXAMPLE_SCRIPT_FILE
 export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
@@ -1075,7 +1078,6 @@ fn main(){
 
     println!("template");
 }
-
 
 /*
 export FILE_NAME=$EXAMPLE_SCRIPT_FILE

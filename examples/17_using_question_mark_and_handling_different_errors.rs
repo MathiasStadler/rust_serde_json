@@ -1,3 +1,4 @@
+
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::fs;
@@ -16,7 +17,9 @@ fn file_to_json(s: &str) -> Result<Person, Box<dyn Error>> {
     Ok(marie)
 }
 
-fn main() {
+
+fn main(){
+
     // _ <- underline avoid err
     // warning: unused  that must be used dbg!
     // marker with underline
@@ -28,6 +31,9 @@ fn main() {
     _ = dbg!(_y);
     _ = dbg!(_z);
 }
+
+// # create test json files before run => 16_generate_json_file.rs
+// ls -l /tmp/*json.txt
 
 /*
 export FILE_NAME=17_using_question_mark_and_handling_different_errors.rs
