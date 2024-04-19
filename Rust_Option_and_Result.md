@@ -5,6 +5,7 @@
 - [FROM HERE](https://www.sheshbabu.com/posts/rust-error-handling/)
 - - [GITHUB REPO](https://github.com/sheshbabu/rust-error-handling-examples/tree/master)
 - [good tutorial of rust basic](http://saidvandeklundert.net/learn/)
+- [markdown o highlight a "Note" and "Warning" using blockquote](https://github.com/orgs/community/discussions/16925)
 
 ## git editor set of vi
 
@@ -1067,6 +1068,8 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
+## 
+
 ## rust script template
 
 ```rust
@@ -1100,3 +1103,16 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 */
 EoF
 ```
+
+## to highlight a "Note" and "Warning" using blockquote
+
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+> [!TIP]
+> Optional information to help a user be more successful.
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+> [!CAUTION]
+> Negative potential consequences of an action.
