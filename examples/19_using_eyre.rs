@@ -1,5 +1,7 @@
 fn main() {
     #[allow(unused_imports)]
+    use eyre::eyre;
+    #[allow(unused_imports)]
     use eyre::{EyreHandler, Report, Result, WrapErr};
     use serde::{Deserialize, Serialize};
     use std::fs;
@@ -15,7 +17,7 @@ fn main() {
         let secrets: Secrets =
             serde_json::from_str(&text).wrap_err("Problem serializing secrets.")?;
         if secrets.username.chars().count() < 2 {
-            //return Err(eyre!("Username in secrets file is too short"));
+            return Err(eyre!("Username in secrets file is too short"));
         }
         Ok(secrets)
     }
@@ -29,6 +31,9 @@ fn main() {
     //Error - Problem serializing secrets
     let c = get_secrets("/tmp/invalid_json.txt");
     _ = dbg!(c);
+    //Error - Problem serializing secrets
+    let d = get_secrets("/tmp/secrets_short_username.json");
+    _ = dbg!(d);
 }
 
 /*

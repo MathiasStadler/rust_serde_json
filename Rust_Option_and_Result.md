@@ -1159,6 +1159,9 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
+> [!NOTE]
+> The anyhow crate was forked by Jane Lusby. She created eyre
+
 ## example using eyre
 
 ```rust

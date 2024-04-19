@@ -73,6 +73,31 @@ fn main() {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
+
+    // create /tmp/secrets_short_username.json
+    #[allow(unused_variables)]
+    let secrets_short_username_json_string = r#"{
+        "username": "u",
+        "password": "password"
+    }
+    "#;
+    // secrets
+    let mut secrets_short_username_test_file = OpenOptions::new()
+        .truncate(true)
+        // .create_new(true)
+        .create(true)
+        .read(true)
+        .write(true)
+        .open("/tmp/secrets_short_username.json")
+        .unwrap();
+
+    //  write json sting to file
+    let eg = secrets_short_username_test_file.write_all(secrets_short_username_json_string.as_bytes());
+    match eg {
+        Ok(()) => println!("OK"),
+        Err(e) => println!("{:?}", e),
+    }
+
 }
 
 /*
