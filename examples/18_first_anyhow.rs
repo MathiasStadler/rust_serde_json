@@ -22,11 +22,11 @@ fn main() {
         Ok(secrets)
     }
     // Ok
-    let _a = get_secrets("missing_file.txt");
+    let _a = get_secrets("/tmp/secrets.json");
     // Result NOT used
     _ = dbg!(_a);
     // Error
-    let _b = get_secrets("/tmp/secrets.json");
+    let _b = get_secrets("/tmp/missing_file.txt");
     _ = dbg!(_b);
 }
 
