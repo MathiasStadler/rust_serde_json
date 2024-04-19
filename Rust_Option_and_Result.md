@@ -259,13 +259,12 @@ cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
 
 fn main(){
-let something: Option<&str> = Some("Something");
-        let unwrapped = something.unwrap(); // "Something"
-        println!("{:?}\n{:?}", something, unwrapped);
-        let _nothing: Option<&str> = None;
-        // uncommenting the next line will cause a panic:
-        //nothing.unwrap();
-
+    let something: Option<&str> = Some("Something");
+    let unwrapped = something.unwrap(); // "Something"
+    println!("{:?}\n{:?}", something, unwrapped);
+    let _nothing: Option<&str> = None;
+    // uncommenting the next line will cause a panic:
+    //nothing.unwrap();
 }
 
 /*
@@ -298,11 +297,10 @@ fn might_print(option: Option<&str>) {
 }
 
 pub fn main(){
-
-let something: Option<&str> = Some("some str");
-let nothing: Option<&str> = None;
-might_print(something);
-might_print(nothing);
+    let something: Option<&str> = Some("some str");
+    let nothing: Option<&str> = None;
+    might_print(something);
+    might_print(nothing);
 }
 
 /*
@@ -340,11 +338,11 @@ fn contains_char(text: &str, target_c: char) -> Option<&str> {
 
 pub fn main(){
 
-let a = contains_char("Rust in action", 'a');
-let q = contains_char("Rust in action", 'q');
+    let a = contains_char("Rust in action", 'a');
+    let q = contains_char("Rust in action", 'q');
 
-println!("{:?}", a);
-println!("{:?}", q);
+    println!("{:?}", a);
+    println!("{:?}", q);
 }
 
 /*
@@ -384,37 +382,35 @@ fn contains_char(text: &str, target_c: char) -> Option<&str> {
 
 pub fn main(){
 
-{
-// way one
-// The first one, which is the least safe, would be simply calling unwrap
-let a = contains_char("Rust in action", 'a');
-let a_unwrapped = a.unwrap();
-println!("{:?}", a_unwrapped);
-}
-
-{
-// way two
-// The second, safer option, is to use a match statement
-let a = contains_char("Rust in action", 'a');
-match a {
-    Some(a) => println!("contains_char returned something: {:?}!", a),
-    None => println!("contains_char did not return something, so branch off here"),
-}
-
-}
-{
-    // way three
-    // The third option is to capture the return of the function
-    // in a variable and use if let
-    let a = contains_char("Rust in action", 'a');
-    if let Some(a) = contains_char("Rust in action", 'a') {
-        println!("contains_char returned something: {:?}!", a);
+    {
+        // way one
+        // The first one, which is the least safe, would be simply calling unwrap
+        let a = contains_char("Rust in action", 'a');
+        let a_unwrapped = a.unwrap();
+        println!("{:?}", a_unwrapped);
     }
-    else {
-        println!("contains_char did not return something, so branch off here")
-    }
-}
 
+    {
+        // way two
+        // The second, safer option, is to use a match statement
+        let a = contains_char("Rust in action", 'a');
+            match a {
+                Some(a) => println!("contains_char returned something: {:?}!", a),
+                None => println!("contains_char did not return something, so branch off here"),
+            }
+    }
+    {
+        // way three
+        // The third option is to capture the return of the function
+        // in a variable and use if let
+        let a = contains_char("Rust in action", 'a');
+        if let Some(a) = contains_char("Rust in action", 'a') {
+            println!("contains_char returned something: {:?}!", a);
+        }
+        else {
+            println!("contains_char did not return something, so branch off here")
+        }
+    }
 }
 
 /*
@@ -474,25 +470,25 @@ pub fn main(){
     //Option value => None
     let _return_option = contains_char("Rust in action", 'x');
 
-    match _return_option {
-        Some(contains_char) => println!("Some => Letter contains string {:?}", contains_char),
-        None => println!("unwrap None not possible instead => None => Letter NOT contains string"),
-        }
+        match _return_option {
+            Some(contains_char) => println!("Some => Letter contains string {:?}", contains_char),
+            None => println!("unwrap None not possible instead => None => Letter NOT contains string"),
+            }
     }
     {
-    // way two
-    // The second, safer option, is to use a match statement
-    let a = contains_char("Rust in action", 'a');
-    match a {
-        Some(a) => println!("Some => contains_char returned something: {:?}!", a),
-        None => println!("None => contains_char did not return something, so branch off here"),
-    }
-    // None
-    let a = contains_char("Rust in action", 'x');
+        // way two
+        // The second, safer option, is to use a match statement
+        let a = contains_char("Rust in action", 'a');
         match a {
             Some(a) => println!("Some => contains_char returned something: {:?}!", a),
             None => println!("None => contains_char did not return something, so branch off here"),
         }
+        // None
+        let a = contains_char("Rust in action", 'x');
+            match a {
+                Some(a) => println!("Some => contains_char returned something: {:?}!", a),
+                None => println!("None => contains_char did not return something, so branch off here"),
+            }
     }
     {
        // way three
@@ -558,12 +554,10 @@ struct Person {
 }
 
 fn main(){
-
     let marie = Person {
         name: String::from("Marie"),
         age: Some(2),
     };
-
     let jan = Person {
         name: String::from("Jan"),
         age: None,
@@ -671,7 +665,6 @@ pub enum Result<T, E> {
 export EXAMPLE_SCRIPT_FILE="12_dbg_on_the_result.rs"
 export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
-
 fn check_length(s: &str, min: usize) -> Result<&str, String> {
     if s.chars().count() >= min {
         return Ok(s)
@@ -682,12 +675,9 @@ fn check_length(s: &str, min: usize) -> Result<&str, String> {
 
 fn main(){
     let _a = check_length("some str", 5);
-
     let _b = check_length("another str", 300);
-
     // generate warning: unused  that must be used dbg!
     // marker with underline => generate NOT warning
-
     _ = dbg!(_a); // Ok("some str",)
     _ = dbg!(_b); // Err("'another str' is not long enough!",)
 }
@@ -739,8 +729,8 @@ fn main(){
     //Ok
     let func_return = check_length("some str", 5);
     let a_str = match func_return {
-    Ok(a_str) => a_str,
-    Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
+        Ok(a_str) => a_str,
+        Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
         };
     // after check_length
     println!("Length is Ok -> this str is long enough! => {} <=",a_str);
@@ -750,10 +740,10 @@ fn main(){
     // Err
     let func_return = check_length("some string literal", 100);
     #[allow(unused_variables)]
-    let _a_str = match func_return {
-    Ok(a_str) => a_str,
-    Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
-};
+        let _a_str = match func_return {
+            Ok(a_str) => a_str,
+            Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
+    };
 // thread 'main' panicked at 'Problem running 'check_length':
 // "'some string literal' is not long enough!"'
 
@@ -809,23 +799,23 @@ export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
 fn main(){
-   let json_string = r#"
-{
-    "key": "value",
-    "another key": "another value",
-    "key to a list" : [1 ,2]
-}"#;
+    let valid_json_string = r#"
+    {
+        "key": "value",
+        "another key": "another value",
+        "key to a list" : [1 ,2]
+    }"#;
 
-let invalid_json_string = r#"
-{
-    // The Error is ::
-    "key":: "value",
-    "another key": "another value",
-    "key to a list" : [1 ,2]
-}"#;
+    let invalid_json_string = r#"
+    {
+        // The Error
+        invalid_key_NOT_STRING :: "value",
+        "another key": "another value",
+        "key to a list" : [1 ,2]
+    }"#;
 
-let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
-println!("Ok => {:?}", &json_serialized);
+let valid_json_serialized: serde_json::Value = serde_json::from_str(&valid_json_string).unwrap();
+println!("Ok => {:?}", &valid_json_serialized);
 // Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
 
 let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
@@ -864,7 +854,7 @@ export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
 fn main(){
-   let json_string = r#"
+   let valid_json_string = r#"
 {
     "key": "value",
     "another key": "another value",
@@ -873,20 +863,23 @@ fn main(){
 
 let invalid_json_string = r#"
 {
-    // The Error is
-    "key" "value",
+    // The Error
+    invalid_key_NOT_STRING :: "value",
     "another key": "another value",
     "key to a list" : [1 ,2]
 }"#;
 
+// change from unwrap() to expect("msg");
 // let json_serialized: serde_json::Value = serde_json::from_str(&json_string).unwrap();
 // instead /w .expect("unable to deserialize JSON");
-let json_serialized: serde_json::Value = serde_json::from_str(&json_string).expect("MESSAGE EXPECT => unable to deserialize JSON");
+let valid_json_serialized: serde_json::Value = serde_json::from_str(&valid_json_string).expect("MESSAGE EXPECT => unable to deserialize JSON");
 
 
 println!("Ok => {:?}", &json_serialized);
+// expected Output =>
 // Object({"another key": String("another value"), "key": String("value"), "key to a list": Array([Number(1), Number(2)])})
 
+// change from unwrap() to expect("msg");
 // let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).unwrap();
 // instead /w .expect("unable to deserialize JSON");
 let invalid_json_serialized: serde_json::Value = serde_json::from_str(&invalid_json_string).expect("MESSAGE EXPECT => unable to deserialize JSON");
@@ -941,29 +934,27 @@ fn main() {
     // create valid file
     let mut valid_test_file = OpenOptions::new()
         .truncate(true)
-        // .create_new(true)
         .create(true)
         .read(true)
         .write(true)
         .open("/tmp/valid_json.txt")
         .unwrap();
 
-    //  write valid json sting to file
+    //write valid json sting to file
     let eg = valid_test_file.write_all(valid_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
 
-    // create invalid file
-
+    //create invalid file
     #[allow(unused_variables)]
-    let invalid_json_string = r#"{
-    invalid_key_NOT_STRING : "MyName",
-    "age": 69
-}
-"#;
-
+        let invalid_json_string = r#"{
+        invalid_key_NOT_STRING : "MyName",
+        "age": 69
+    }
+    "#;
+    // invalid
     let mut invalid_test_file = OpenOptions::new()
         .truncate(true)
         // .create_new(true)
@@ -1004,6 +995,9 @@ EoF
 ```
 
 ## Using ? and handling different errors
+
+> [!IMPORTANT]  
+> The Err variant is defined as ```rust Box<dyn Error>```, which represents ‘any type of error’
 
 ```rust
 export EXAMPLE_SCRIPT_FILE="17_using_question_mark_and_handling_different_errors.rs"
@@ -1068,7 +1062,70 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
-## 
+## using other crates: anyhow
+
+- add anyhow
+
+```bash
+cargo add anyhow
+```
+
+## first anyhow example
+
+```rust
+export EXAMPLE_SCRIPT_FILE="18_first_anyhow.rs"
+export EXAMPLE_SCRIPT_DIR="examples"
+cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
+
+use anyhow::{anyhow, Context, Result};
+use serde::{Deserialize, Serialize};
+use std::fs;
+
+
+fn main(){
+#[derive(Debug, Deserialize, Serialize)]
+// FROM HERE
+// http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/
+// search for => using other crates: anyhow
+struct Secrets {
+    username: String,
+    password: String,
+}
+
+fn get_secrets(s: &str) -> Result<Secrets> {
+    let text = fs::read_to_string(s).context("Secrets file is missing.")?;
+    let secrets: Secrets =
+        serde_json::from_str(&text).context("Problem serializing secrets.")?;
+    if secrets.password.chars().count() < 2 {
+        return Err(anyhow!("Password in secrets file is too short"));
+    }
+    Ok(secrets)
+}
+    let _a = get_secrets("missing_file.txt");
+    dbg!(_a);
+}
+
+/*
+export FILE_NAME=$EXAMPLE_SCRIPT_FILE
+export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
+git add \$FILE_DIR_NAME/\$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+# cargo install --list
+# cargo update --workspace
+cargo clippy --fix
+cargo clippy --fix --examples
+# cargo check --verbose
+# cargo check --verbose --examples
+cargo check
+cargo check --examples
+cargo fmt -- --emit=files
+git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git push
+cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
+*/
+EoF
+```
 
 ## rust script template
 
@@ -1114,7 +1171,7 @@ EoF
 > [!TIP]
 > Optional information to help a user be more successful.
 
--important
+- important
 
 > [!IMPORTANT]  
 > Crucial information necessary for users to succeed.
