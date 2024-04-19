@@ -1,4 +1,3 @@
-
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::fs;
@@ -17,9 +16,7 @@ fn file_to_json(s: &str) -> Result<Person, Box<dyn Error>> {
     Ok(marie)
 }
 
-
-fn main(){
-
+fn main() {
     // _ <- underline avoid err
     // warning: unused  that must be used dbg!
     // marker with underline
