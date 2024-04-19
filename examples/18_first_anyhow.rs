@@ -22,7 +22,7 @@ fn main() {
         Ok(secrets)
     }
     let _a = get_secrets("missing_file.txt");
-    dbg!(_a);
+    _ = dbg!(_a);
 }
 
 /*

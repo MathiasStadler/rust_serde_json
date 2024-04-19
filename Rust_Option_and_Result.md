@@ -1102,7 +1102,7 @@ fn get_secrets(s: &str) -> Result<Secrets> {
     Ok(secrets)
 }
     let _a = get_secrets("missing_file.txt");
-    dbg!(_a);
+    _ _ = dbg!(_a);
 }
 
 /*
