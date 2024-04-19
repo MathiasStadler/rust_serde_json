@@ -1,4 +1,44 @@
-# FROM HERE
+# toc
+
+<!-- TOC -->
+
+- [toc](#toc)
+    - [FROM HERE](#from-here)
+    - [git editor set of vi](#git-editor-set-of-vi)
+    - [git status](#git-status)
+    - [template bash script](#template-bash-script)
+    - [simple enum in Rust](#simple-enum-in-rust)
+    - [match enum in RUST](#match-enum-in-rust)
+    - [The Option is generic over type T](#the-option-is-generic-over-type-t)
+    - [Matching on the Option](#matching-on-the-option)
+    - [Unwrapping the Option](#unwrapping-the-option)
+    - [option-and-result -- complete sample](#option-and-result----complete-sample)
+    - [Passing an optional value to a function](#passing-an-optional-value-to-a-function)
+    - [Having a function return an optional value](#having-a-function-return-an-optional-value)
+    - [three different ways to work with the Optional return - Some](#three-different-ways-to-work-with-the-optional-return---some)
+    - [three different ways to work with the Optional return - None](#three-different-ways-to-work-with-the-optional-return---none)
+    - [continue here => Optional values inside a struct](#continue-here--optional-values-inside-a-struct)
+    - [Optional values inside a struct](#optional-values-inside-a-struct)
+    - [Real world example /w vec->pop](#real-world-example-w-vec-pop)
+    - [The result](#the-result)
+    - [Matching on the Result](#matching-on-the-result)
+    - [We can use a match expression to deal with the Result](#we-can-use-a-match-expression-to-deal-with-the-result)
+    - [continue here => Unwrapping the Result](#continue-here--unwrapping-the-result)
+    - [Unwrapping the Result](#unwrapping-the-result)
+    - [example with use unwrap](#example-with-use-unwrap)
+    - [example with use unwrap error handling with expect](#example-with-use-unwrap-error-handling-with-expect)
+    - [continue here => Using ? and handling different errors](#continue-here--using--and-handling-different-errors)
+    - [generate json test file](#generate-json-test-file)
+    - [Using ? and handling different errors](#using--and-handling-different-errors)
+    - [using other crates: anyhow](#using-other-crates-anyhow)
+    - [first anyhow example](#first-anyhow-example)
+    - [example using eyre](#example-using-eyre)
+    - [rust script template](#rust-script-template)
+    - [to highlight a "Note" and "Warning" using blockquote](#to-highlight-a-note-and-warning-using-blockquote)
+
+<!-- /TOC -->
+
+## FROM HERE
 
 - [FROM HERE](http://saidvandeklundert.net/learn/2021-09-01-rust-option-and-result/)
 - - [GITHUB HERE](https://github.com/saidvandeklundert/LearningRust/blob/master/blog/option-and-result/src/main.rs)
