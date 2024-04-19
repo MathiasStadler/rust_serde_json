@@ -929,8 +929,7 @@ fn main() {
         "name": "MyName",
         "age": 69
     }
-"#;
-
+    "#;
     // create valid file
     let mut valid_test_file = OpenOptions::new()
         .truncate(true)
@@ -939,14 +938,12 @@ fn main() {
         .write(true)
         .open("/tmp/valid_json.txt")
         .unwrap();
-
     //write valid json sting to file
     let eg = valid_test_file.write_all(valid_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
-
     //create invalid file
     #[allow(unused_variables)]
         let invalid_json_string = r#"{
@@ -990,6 +987,31 @@ fn main() {
 
     //  write json sting to file
     let eg = secrets_test_file.write_all(secrets_json_string.as_bytes());
+    match eg {
+        Ok(()) => println!("OK"),
+        Err(e) => println!("{:?}", e),
+    }
+
+    // create /tmp/secrets_short_username.json
+    #[allow(unused_variables)]
+    let secrets_short_username_json_string = r#"{
+        "username": "u",
+        "password": "password"
+    }
+    "#;
+    // secrets
+    let mut secrets_short_username_test_file = OpenOptions::new()
+        .truncate(true)
+        // .create_new(true)
+        .create(true)
+        .read(true)
+        .write(true)
+        .open("/tmp/secrets_short_username.json")
+        .unwrap();
+
+    //  write json sting to file
+    let eg =
+        secrets_short_username_test_file.write_all(secrets_short_username_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),

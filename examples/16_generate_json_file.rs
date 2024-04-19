@@ -8,8 +8,7 @@ fn main() {
         "name": "MyName",
         "age": 69
     }
-"#;
-
+    "#;
     // create valid file
     let mut valid_test_file = OpenOptions::new()
         .truncate(true)
@@ -18,14 +17,12 @@ fn main() {
         .write(true)
         .open("/tmp/valid_json.txt")
         .unwrap();
-
     //write valid json sting to file
     let eg = valid_test_file.write_all(valid_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
-
     //create invalid file
     #[allow(unused_variables)]
     let invalid_json_string = r#"{
