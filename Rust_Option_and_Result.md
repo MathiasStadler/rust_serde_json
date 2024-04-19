@@ -3,7 +3,7 @@
 <!-- TOC -->
 
 - [toc](#toc)
-    - [FROM HERE](#from-here)
+  - [FROM HERE](#from-here)
     - [git editor set of vi](#git-editor-set-of-vi)
     - [git status](#git-status)
     - [template bash script](#template-bash-script)
@@ -1320,7 +1320,9 @@ cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
 EoF
 ```
 
-## to highlight a "Note" and "Warning" using blockquote
+## [to highlight a "Note" and "Warning" using blockquote](https://github.com/orgs/community/discussions/16925)
+
+- note
 
 > [!NOTE]  
 > Highlights information that users should take into account, even when skimming.
