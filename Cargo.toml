@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.82"
 chrono = "0.4.37"
+eyre = "0.6.12"
 reqwest = { version = "0.12.3", features = ["blocking", "json"] }
 # serde = "1.0.197"
 serde = { version = "1.0.197", features = ["derive"] }

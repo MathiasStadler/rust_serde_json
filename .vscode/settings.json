@@ -3,6 +3,7 @@
         "chrono",
         "eprintln",
         "exitonerror",
+        "jsonnn",
         "nocapture",
         "println",
         "reqwest",
