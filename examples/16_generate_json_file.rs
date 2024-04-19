@@ -28,7 +28,7 @@ fn main() {
 
     //create invalid file
     #[allow(unused_variables)]
-        let invalid_json_string = r#"{
+    let invalid_json_string = r#"{
         invalid_key_NOT_STRING : "MyName",
         "age": 69
     }
@@ -52,7 +52,7 @@ fn main() {
 
     //create secrets.json
     #[allow(unused_variables)]
-        let secrets_json_string = r#"{
+    let secrets_json_string = r#"{
         "username": "username",
         "password": "password"
     }
