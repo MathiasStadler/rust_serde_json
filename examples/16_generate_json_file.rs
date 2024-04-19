@@ -92,12 +92,12 @@ fn main() {
         .unwrap();
 
     //  write json sting to file
-    let eg = secrets_short_username_test_file.write_all(secrets_short_username_json_string.as_bytes());
+    let eg =
+        secrets_short_username_test_file.write_all(secrets_short_username_json_string.as_bytes());
     match eg {
         Ok(()) => println!("OK"),
         Err(e) => println!("{:?}", e),
     }
-
 }
 
 /*
