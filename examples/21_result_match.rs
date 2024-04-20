@@ -20,7 +20,7 @@ impl Error for SuperError {
         "I'm the superhero of errors"
     }
 
-    fn cause(&self) -> Option<&Error> {
+    fn cause(&self) -> Option<&dyn Error> {
         Some(&self.side)
     }
 }
