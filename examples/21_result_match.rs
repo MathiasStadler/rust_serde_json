@@ -49,8 +49,8 @@ fn get_super_error() -> Result<(), SuperError> {
 fn main() {
     match get_super_error() {
         Err(e) => {
-            println!("Error: {}", e.description());
-            println!("Caused by: {}", e.cause().unwrap());
+            println!("Error: {}", e.to_string());
+            println!("Caused by: {}", e.source().unwrap());
         }
         _ => println!("No error"),
     }
