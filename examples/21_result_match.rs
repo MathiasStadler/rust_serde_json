@@ -1,6 +1,6 @@
 // FROM HERE
 // https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/std/error/trait.Error.html
-   
+
 use std::error::Error;
 use std::fmt;
 
@@ -41,7 +41,9 @@ impl Error for SuperErrorSideKick {
 }
 
 fn get_super_error() -> Result<(), SuperError> {
-    Err(SuperError { side: SuperErrorSideKick })
+    Err(SuperError {
+        side: SuperErrorSideKick,
+    })
 }
 
 fn main() {
@@ -53,7 +55,6 @@ fn main() {
         _ => println!("No error"),
     }
 }
-
 
 /*
 export FILE_NAME=21_result_match.rs

@@ -2,10 +2,10 @@
 // https://github.com/rust-lang/rust/issues/113081
 // https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
 
-use std::process::ExitCode;
 use std::error::Error;
+use std::process::ExitCode;
 
-fn real_main() -> Result<ExitCode,Error> {
+fn real_main() -> Result<ExitCode, Error> {
     // ... do something ...
     Err(ExitCode::FAILURE)
 }
@@ -13,15 +13,14 @@ fn real_main() -> Result<ExitCode,Error> {
 fn main() -> ExitCode {
     let result_exit_code = real_main();
 
-    let exit_code =  match real_main() {
-        Ok(exit_code) => println("Ok Exit Code {:?}",exit_code),
-        Err(error) => eprintln("Err Exit Code {:?}",error),
+    let exit_code = match real_main() {
+        Ok(exit_code) => println("Ok Exit Code {:?}", exit_code),
+        Err(error) => eprintln("Err Exit Code {:?}", error),
     };
 
     if !exit_code.is_success() {
         eprintln!("FAILED!");
     }
-
 
     println!("see output of =>  echo 0");
     std::process::exit(exitcode::OK);
