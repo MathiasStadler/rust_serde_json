@@ -54,7 +54,7 @@ export EXAMPLE_SCRIPT_DIR="examples"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 // FROM HERE
 // https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/std/error/trait.Error.html
-   
+
 use std::error::Error;
 use std::fmt;
 
@@ -74,7 +74,7 @@ impl Error for SuperError {
         "I'm the superhero of errors"
     }
 
-    fn cause(&self) -> Option<&Error> {
+    fn cause(&self) -> Option<&dyn Error> {
         Some(&self.side)
     }
 }
@@ -95,25 +95,26 @@ impl Error for SuperErrorSideKick {
 }
 
 fn get_super_error() -> Result<(), SuperError> {
-    Err(SuperError { side: SuperErrorSideKick })
+    Err(SuperError {
+        side: SuperErrorSideKick,
+    })
 }
 
 fn main() {
     match get_super_error() {
         Err(e) => {
-            println!("Error: {}", e.description());
-            println!("Caused by: {}", e.cause().unwrap());
+            println!("Error: {}", e);
+            println!("Caused by: {}", e.source().unwrap());
         }
         _ => println!("No error"),
     }
 }
 
-
 /*
-export FILE_NAME=$EXAMPLE_SCRIPT_FILE
-export FILE_DIR_NAME=$EXAMPLE_SCRIPT_DIR
-git add \$FILE_DIR_NAME/\$FILE_NAME
-git commit --all --message="-> Add BEFORE housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+export FILE_NAME=21_result_match.rs
+export FILE_DIR_NAME=examples
+git add $FILE_DIR_NAME/$FILE_NAME
+git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
 # cargo install --list
 # cargo update --workspace
@@ -124,10 +125,10 @@ cargo clippy --fix --examples
 cargo check
 cargo check --examples
 cargo fmt -- --emit=files
-git commit --all --message="-> Add AFTER housekeeping => \$FILE_DIR_NAME/\$FILE_NAME"
+git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
 git push
-cargo run --example \$(echo \$FILE_NAME | cut -d . -f 1)
-echo "ReturnCode => \$?"
+cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
+echo "ReturnCode => $?"
 */
 EoF
 ```

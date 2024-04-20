@@ -59,8 +59,8 @@ fn main() {
 /*
 export FILE_NAME=21_result_match.rs
 export FILE_DIR_NAME=examples
-git add $FILE_DIR_NAME/$FILE_NAME
-git commit --all --message="-> Add BEFORE housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git add examples/21_result_match.rs
+git commit --all --message="-> Add BEFORE housekeeping => examples/21_result_match.rs"
 git push
 # cargo install --list
 # cargo update --workspace
@@ -71,8 +71,8 @@ cargo clippy --fix --examples
 cargo check
 cargo check --examples
 cargo fmt -- --emit=files
-git commit --all --message="-> Add AFTER housekeeping => $FILE_DIR_NAME/$FILE_NAME"
+git commit --all --message="-> Add AFTER housekeeping => examples/21_result_match.rs"
 git push
-cargo run --example $(echo $FILE_NAME | cut -d . -f 1)
-echo "ReturnCode => $?"
+cargo run --example 21_result_match
+echo "ReturnCode => 0"
 */
