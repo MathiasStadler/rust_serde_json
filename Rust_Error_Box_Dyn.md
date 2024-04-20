@@ -21,8 +21,6 @@
 
 ## ignore error - NOT nice error handling
 
-
-
 ## Use a fallback value - works
 
 ```bash
@@ -217,7 +215,7 @@ EoF
 
 ```rust
 cat <<EoF > ./examples/my-custom-error.rs
-/* 
+/*
 FROM HERE
 https://github.com/sheshbabu/rust-error-handling-examples/blob/master/07-create-custom-errors/src/main.rs
 */
@@ -345,37 +343,11 @@ fn get_current_date() -> Result<String, MyCustomError> {
 EoF
 ```
 
-## garbage
-
-```bash
-cat << EoF >./examples/option_generic_type.rs
-Eof
-
-
-```
-
-## test
-
-```bash
-cat << EOF > ./examples/test.rs
-
-EoF
-```
-
-## test 2
-
-```bash
-cat << EoF > ./examples/test_two.rs
-
-Eof
-
-```
-
 ## rust script template
 
 ```rust
 export EXAMPLE_SCRIPT_FILE="99_template.rs"
-export EXAMPLE_SCRIPT_DIR="examples"
+export EXAMPLE_SCRIPT_DIR="examples/errors_handling/"
 cat << EoF > ./$EXAMPLE_SCRIPT_DIR/$EXAMPLE_SCRIPT_FILE
 
 fn main(){
