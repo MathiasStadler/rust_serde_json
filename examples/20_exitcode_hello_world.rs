@@ -1,9 +1,7 @@
 // FROM HERE
 // https://rust-cli.github.io/book/in-depth/exit-code.html
 
-
-fn main(){
-
+fn main() {
     println!("Hello World");
     println!("see output of =>  echo 0");
     std::process::exit(exitcode::OK);
