@@ -3,16 +3,17 @@
 // https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
 
 use std::process::ExitCode;
+use std::error::Error;
 
-fn real_main() -> ExitCode {
+fn real_main() -> Result<ExitCode,Error> {
     // ... do something ...
-    ExitCode::FAILURE
+    Err(ExitCode::FAILURE)
 }
 
 fn main() -> ExitCode {
     let result_exit_code = real_main();
 
-    let exit_code =  match result_exit_code {
+    let exit_code =  match real_main() {
         Ok(exit_code) => println("Ok Exit Code {:?}",exit_code),
         Err(error) => eprintln("Err Exit Code {:?}",error),
     };
