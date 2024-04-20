@@ -189,6 +189,8 @@ echo "ReturnCode => \$?"
 EoF
 ```
 
+## [continue here /w structs](https://doc.rust-lang.org/book/ch05-00-structs.html)
+
 ## rust script template
 
 ```rust

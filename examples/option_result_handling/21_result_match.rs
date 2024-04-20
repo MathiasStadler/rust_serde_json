@@ -50,7 +50,11 @@ fn main() {
     match get_super_error() {
         Err(e) => {
             println!("Error: {}", e);
-            println!("Caused by: {}", e.source().unwrap());
+            // println!("Caused by: {}", e.source().unwrap());
+            let _a_str = match e.source() {
+                Ok(a_str) => a_str,
+                Err(error) => panic!("Err => Problem running 'check_length':\n {:?}", error),
+            };
         }
         _ => println!("No error"),
     }
